@@ -1,0 +1,108 @@
+# Historique et définition du contre-transfert {#historique}
+
+Dans ce chapitre, nous allons tenter de comprendre dans quel contexte la notion de contre-transfert est née et suivre son évolution au fil des décennies et des recherches qui furent menées à son sujet. Nous proposerons donc plusieurs définitions pour parvenir à celle que nous proposons.
+
+## Prémice théorique au contre-transfert : le transfert
+
+Pour traiter du *contre-transfert*, il faut d'abord évoquer le *transfert* qui est une notion importante pour @freud1895etudes. En effet, ces deux médecins tentent de comprendre pourquoi certaines patientes *hystériques* présentent certains dysfonctionnement somatiques alors que le substrat biologique semble intact. Ils posent l'hypothèse que le trouble de ces patientes résulte de souvenirs qui font l'objet d'une censure psychologique car estimés coupables. Le traitement vise alors à faire émerger ces souvenirs à la conscience par le biais de la parole. Or, les patientes *résistent* à cette remémoration : elles se rendent à la consultation médicale mais ne parviennent pas à exprimer tout ce qu'elles voudraient. A la place de cette parole, @freud1895etudes constatent un phénomène étrange : les patientes s'éprennent amoureusement de leur médecin. Leur hypothèse est que cet amour résulte d'une déplacement psychique inconscient : l'amour éprouvé par la patiente à l'égard d'un de ses parents lorsqu'elle était enfant est *transféré* sur la personne du médecin. Pour @freud1895etudes, ce tranfert fut d'abord considéré comme un obstacle au traitement (car il court-circuite la parole) avant de devenir une condition sine qua non à la guérison (en analysant le phénomène de transfert). Dans la cure psychanalytique, la *névrose* de la patiente est transformée en *névrose de transfert* qui est l'objet de l'élaboration thérapeutique. C'est la *dissolution de cette névrose de transfert* qui mènerait ainsi à la *guérison*.
+
+## Apparition du concept de contre-transfert
+
+En 1906, Carl Jung - alors encore très proche de Sigmung Freud - lui parle d'une de ses patientes, Sabina Spielrein hospitalisée à la clinique de Burghölzli en Suisse à la suite à une épisode psychotique. Selon @roudinesco2014sigmund, Jung aurait entretenu une relation amoureuse avec cette patiente durant plusieurs années mais ne s'en ouvrit à Freud qu'en 1908. En réponse, Celui-ci, évoqua pour la première fois la notion de *contre-transfert* dans une lettre adressée à Jung :
+
+> De telles expériences, bien que douloureuses, sont nécessaires et difficiles à éviter. Sans elles nous ne connaîtrions pas réellement la vie et ce que nous faisons. En ce qui me concerne, je ne m’y suis jamais fait prendre aussi gravement mais j’en ai été très près à plusieurs reprises et n’y ai échappé que de peu. Je crois que ce sont les tristes nécessités de la vie qui pesaient sur mon travail, et le fait que j’avais dix ans de plus que vous quand j’en suis venu à l’analyse qui m’ont préservé d’expériences semblables. Mais cela ne laisse pas de blessure durable. Elles nous aident à développer la peau épaisse dont nous avons besoin pour dominer **“le contre-transfert”**, lequel constitue, après tout, un problème permanent pour nous. Elles nous enseignent à placer nos propres affects dans une situation plus avantageuse. C’est un mal pour un bien. La façon dont les femmes s’y prennent pour nous charmer au moyen de toutes les perfections concevables de l’esprit, jusqu’à ce qu’elles atteignent leur but, est l’un des plus grands spectacles de la nature. Une fois le succès obtenu ou que son inverse est devenu certain, la constellation change de façon étonnante. [Freud cité par @denis2006incontournable]
+
+Il reprit cette notion dans un texte intitulé *Perspectives d’avenir de la thérapeutique analytique* [@freud1910perspectives] :
+
+> Notre attention s’est portée sur le “contre-transfert” qui s’établit chez le médecin par suite de l’influence qu’exerce le patient sur les sentiments inconscients de son analyste. Nous sommes tout près d’exiger que le médecin reconnaisse et maîtrise en lui-même ce contre-transfert.
+
+La position de Freud est de considérer le contre-transfert comme un *obstacle* au traitement du patient qu'il s'agit de maîtriser, notamment par le biais de l'auto-analyse.
+
+## Sandor Ferenczi : le thérapeute doit faire l’objet d’une analyse afin de contrôler son contre-transfert
+
+À la suite des travaux de Freud, le concept de contre-transfert n’a plus fait l’objet d’apports scientifiques jusqu’aux années 1950 [@cabre2012contribution; @stefana2017history]. Un élève de Freud, à savoir Ferenczi, avait toutefois intensément travaillé cette notion. Ainsi reprit-il les recherches sur le contre-transfert en s’écartant du postulat de Freud.
+
+> Beaucoup plus thérapeute que Freud, Ferenczi inventa la notion de contre-transfert et ne cessa, tout au long de sa vie, de modifier les principes de la cure et d'introduire une empathie particulière dans la relation avec ses patients et ses élèves. [@roudinesco2014sigmund p. 157-158]
+
+Le travail de l’analyste selon Ferenczi exigeait une double tâche :\
+- l’observation de ses patients, l’examen de ses dires et ses comportements; - le contrôle de sa propre attitude et si nécessaire la maîtrise de celle-ci.
+
+Cela diffère de la conception de Freud qui préconisait l’auto-analyse, car pour Ferenczi, le thérapeute devait préalablement être analysé. Pour celui-ci, le contrôle du contre-transfert ne pouvait se faire que via trois phases.
+
+-   La première phase est celle où il n’y a *aucune considération du contre-transfert* et encore moins de son contrôle. Lors de cette phase, le thérapeute se laisse dicter ses comportements par ses émotions et en est submergé. Dans ce cadre, il est impossible de conduire une thérapie fructueuse.\
+-   La deuxième phase est *la résistance au contre-transfert*. Lors de celle-ci, le thérapeute se rend compte de ses sentiments et contrôles ses comportements à un tel point qu’il risque de même devenir trop sévère jusqu’à rejeter le patient ; ce qui va compliquer l’émergence du transfert importante en psychanalyse.\
+-   Enfin, la dernière phase est celle du *contrôle du contre-transfert*. Cette dernière n’est atteinte que si les deux précédentes ont été traversées. Dès lors, l’état mental nécessaire pour le traitement a été atteint comme l’exige la cure analytique [@cabre2012contribution].
+
+Cela sera la première fois que le contre-transfert fut considéré comme un outil essentiel et efficace et non comme un inconvénient.\
+Pour Ferenczi, ce qui émerge du processus analytique naît de la rencontre entre le transfert de l’analysant et le contre-transfert du thérapeute. Ainsi, la rencontre entre ces derniers permet l’exploration des couches profondes du psychisme. Ceci venait confirmer le rôle du contre-trasfert comme un outil majeur, afin d’identifier les éléments les plus significatifs du transfert du patient lors de la relation thérapeutique [@cabre2012contribution; @stefana2017history].
+
+## Paula Heimann : le contre-transfert vu comme une vision totale de la situation analytique
+
+Paula Heimann, dans l’élaboration du concept de contre-transfert, prend en compte la totalité des sentiments que le thérapeute éprouve envers le patient. Elle considère le contre-transfert comme un instrument essentiel et précieux à la compréhension et à l’interprétation de l’inconscient du patient [@angueli2016quatre; @goyena2006heinrich; @stefana2017history].
+
+> Ma thèse est que la réponse émotionnelle de l’analyste à son patient dans la situation analytique constitue l’un des outils les plus importants pour son travail. Le contre-transfert de l’analyste est un instrument d’investigation de l’inconscient du patient. [@heimann1987propos]
+
+Cette psychanalyste souligne que les thérapeutes ne travaillant pas leurs conflits psychiques et l’analyse de leurs problèmes risquaient d’imputer à leurs patients ce qui leur revient. Donc, non seulement, la réponse émotionnelle du thérapeute est une clé permettant d’explorer l’inconscient du patient, mais également l’occasion d’élaborer et de réaliser son propre travail [@angueli2016quatre; @cabre2012contribution]. Selon @goyena2006heinrich, l’approche de Heimann a été vue comme un tournant dans la conception du contre-transfert ; celle-ci étant appréhendée comme une vision totale de la situation analytique. Elle a également mis en évidence l’aspect positif du contre-transfert conçu comme un moyen de communication et un instrument de recherche.
+
+## Winnicott : le contre-transfert intégrant les sentiments de haine
+
+Dans la continuité des travaux de Ferenczi, Winnicott a mis en avant que le thérapeute *suffisamment bon* était celui qui pouvait aimer et haïr simultanément un patient. En effet, si le thérapeute s’empêche de ressentir librement ses sentiments, ces derniers se transformeront en un contre-transfert négatif. Par conséquent, il sera difficile de parvenir à une prise de conscience qui permettra d’agir [@stefana2017history].
+
+> Si l'analyste est l'objet de ressentis violents, il doit les anticiper et s'en protéger car il doit supporter d'être mis dans cette position. Par dessus tout, il ne doit pas dénier la haine qui existe réellement en lui-même. La haine qui est justifiée dans le contexte du moment doit être prise en considération, gardée en mémoire et disponible pour une éventuelle interprétation. \[traduction personnelle\] [@winnicott1949hate]
+
+Dans son article, @winnicott1949hate compare le thérapeute à une mère qui a plusieurs raisons de haïr son enfant mais qui l'aime malgré tout.
+
+Pour @goyena2006heinrich, Winnicott a mis en évidence une conception novatrice du concept qu’est le contre-transfert. En effet, cette conception met l’accent sur les ressentis de haine que le thérapeute était susceptible d’éprouver.\
+Le thérapeute doit maintenir une position objective. Toutefois, Winnicott aurait affirmé que le fait d’avouer sa haine contre-transférentielle pouvait être bénéfique et non nuisible, que cela soit pour le patient et/ou pour le progrès de la thérapie [@cabre2012contribution].\
+Finalement, nous pouvons dire que Winnicott opte pour une conception plus large du contre-transfert comprenant les conflits non résolus de l’analyste ainsi que ses expériences et ses réactions émotionnelles.
+
+## Margaret Little : le contre-transfert provient du thérapeute et du patient
+
+Little a défini le contre-transfert comme :
+
+> Toutes les réponses du thérapeute en réponse aux besoins du patient, peu importent les besoins et peu importent les réponses. [@little1957r p. 241]
+
+Dit un peu autrement, elle réserva le terme contre-transfert pour
+
+> la partie spécifique de la réponse totale du thérapeute aux besoins de son patient qui sont restés inconscients et réprimés. [@little1960counter p.29]
+
+Little a été influencée par les idées de Ferenczi. Pour cette dernière, le transfert et le contre-transfert sont les produits combinés du travail inconscient du patient et du thérapeute. Cette relation est composée des parties *conscientes* et *inconscientes*, normales et pathologiques dans chacune des parties. L’auteure voyait donc le contre-transfert comme un outil essentiel à chaque thérapie et un guide indispensable aux interprétations [@stefana2017history].\
+Selon @angueli2016quatre, Little pensait que les psychanalystes, alors qu’ils connaissent et reconnaissent l’existence du contre-transfert, évitent de l’interpréter, car ils le considèrent comme dangereux. Or, pour cette dernière, si le bon usage du transfert est un instrument thérapeutique précieux, le bon usage du contre-transfert peut également avoir de bons résultats dans les progrès de la psychanalyse.\
+De ce fait, au sein de ce même article, l’auteure met en exergue la proposition de Little de donner une définition claire du contre-transfert. Elle présente ce dernier, comme le *résultat de la synthèse de divers lieux psychiques du thérapeute pendant qu’il évolue aux côtés du patient*.
+
+## Annie Reich : le contre-transfert influe sur la compréhension et la technique du thérapeute
+
+D’après @reich1951counter, le contre-transfert est constitué des effets, des besoins et conflits inconscients de l’analyste sur sa compréhension ou sa technique. Elle l’associe au concept de l’acting-out mentionné quand l’activité d’analyse a une signification inconsciente pour le thérapeute. A cet instant, la thérapie sera alors motivée par des tendances inconscientes cachées. Le patient ne sera donc pas l’objet sur lequel le thérapeute transfère quelque chose mais l’instrument par lequel il passe pour satisfaire certains de ses propres besoins. La thérapie est, dès lors, utilisée afin de maintenir l’équilibre interne du thérapeute et, ce, de manière inconsciente. Enfin, @reich1951counter ne privilégie pas l’utilisation du contre-transfert dans la relation thérapeutique et ne préconise pas son utilisation, afin d’explorer la situation du patient [@angueli2016quatre; @stefana2017history]. Pour clôturer la partie historique, nous mettons en avant les propos de Brown (2018) illustrant que l’avancée dans la conceptualisation du CT a permis d’attirer l’attention du clinicien sur l’importance de prendre en compte les expériences subjectives de chacun. Elle précise qu’il est vital de pouvoir rester conscient de la richesse de ces expériences et de ne pas les occulter.
+
+## Heinrich Racker : le contre-transfert vu comme une nouvelle expérience pouvant être vécue par le patient
+
+Racker constate que le contre-transfert a été négligé durant plusieurs décennies par les psychanalystes en s'en étonne car il s'agit d'une question pourtant majeure dans la conduite des cure et des analyses didactiques destinées aux thérapeutes. Il pose l'hypothèse que cette négligence découle d'un rejet inconscient de la part des thérapeutes.
+
+> The lack of scientific investigation of countertransference must be due to rejection by analysts of their own countertransferences,- a rejection that represents unresolved struggles with their own primitive anxiety and guilt. [@racker1957meanings p. 306-307]
+
+Or, le rejet par le thérapeute de ses conflits irrésolus est susceptible de perturber l'analyse du transfert de ses patients mais est également susceptible d'induire une transmission (inconsciente) de taches aveugles. @racker1957meanings [p. 308] évoque ainsi un *héritage* d'une génération d'analyste à l'autre d'*idéalisation* de ses capacités d'interprétation et de *dénis* de ses défauts. Deux dangers guettent le thérapeute :
+
+> The neurotic (obsessive) ideal of objectivity leads to repression and blocking of subjectivity and so to the apparent fulfilment of the myth of the 'analyst without anxiety or anger'. The other neurotic extreme is that of 'drowning' in the countertransference. [@racker1957meanings p. 309]
+
+Racker a introduit une distinction entre un *contre-transfert concordante* et un *contre-transfert complémentaire*.
+
+1.  Dans le cadre du *contre-transfert concordant*, le thérapeute est consciemment identifié à certains aspects de la personnalité du patient. Le Moi du clinicien s’identifie au Moi du patient. Ce contre-transfert est à la base des capacités empathiques et intuitives de la compréhension du ressenti du patient. Cette identification partielle permet au thérapeute de garder une distance nécessaire lui permettant d’éviter de s’infiltrer dans les conflits de son patient tout en restant en alliance avec lui.\
+2.  Dans le *contre-transfert complémentaire*, le thérapeute s’identifie aux objets internes projetés par le patient et prend le rôle que ce dernier lui attribue. Si le thérapeute n’identifie pas ce contre-transfert, son comportement, bien qu'empathique et bienveillant, pourrait provoquer la répétition d’une expérience ayant déjà été préjudiciable pour le patient. Toutefois, si le thérapeute est attentif à son expérience du contre-transfert, il pourrait briser les convictions erronées de l’expérience prouvant que la réalité externe n’est pas identique aux perceptions internes. Autrement dit, cela correspond à l’identification et à la soumission du thérapeute à l’un des objets internes du patient. Ces dernières se produisent du fait que le patient traite le thérapeute comme un objet interne, raison pour laquelle il s’identifie à cet objet. Ce type de contre-transfert est vu comme une perturbation qu'il s'agit d'analyser pour faire progresser la thérapie.
+
+Pour @racker1957meanings, ces deux types de contre-transferts ne sont pas nécessairement opposés l'un à l'autre mais doivent être tous les deux pris en considération dans le cadre de la thérapie. Il note qu'il existe une *loi du talion* dans la relation thérapeutique : si le patient éprouve de la haine vis-à-vis du thérapeutique (dans un élan transférentiel), le thérapeute aura tendance à éprouver de la haine vis-à-vis du patient (dans un élan contre-transférentiel). Cette haine doit être reconnue par le thérapeute afin d'être analysée dans le contre-transfert complémentaire.
+
+@racker1957meanings [p. 320-321] propose également de diviser les expériences contre-transférentielles en deux classes : les *pensées* et la *position*.
+
+1.  Les *pensées* qui s’immiscent chez le thérapeute soudainement sans qu’il ne puisse nécessairement trouver de lien rationnel avec le patient et les problématiques abordées. Ces dernières seraient liées à des conflits profonds. Cependant, le clinicien ne doit pas essayer de les repousser impulsivement mais doit plutôt les examiner jusqu’à ce que leur confirmation ou leur négation émerge des problématiques du patient. Ces pensées peuvent être utilisées durant la formation d’interprétations.
+2.  La *position* implique des émotions et la place symbolique à laquelle le patient met le thérapeute en fonction de sa propre histoire.
+
+@racker1957meanings [p. 343] propose également de distinguer le *contre-transfert direct* et le *contre-transfert indirect*.
+
+1.  Lors d’un *contre-transfert direct*, le clinicien est emprunt à celui-ci si l’objet dont dépend le contre-transfert est le patient. Il correspond aux sentiments envers le patient et relève aussi bien de l’identification concordante que de la complémentaire.
+2.  Lors d’un *contre-transfert indirect*, il dépend d’un objet autre que le patient. Cet autre objet est une réponse faite à une personne émotionnellement importante pour le patient et, ce, en dehors du cadre thérapeutique, par exemple l'association professionnelle dont fait partir le thérapeutique. Cette association est susceptible d'induire des émotions et des pensées au sein du cadre thérapeutique.
+
+## Le contre-transfert dans la littérature contemporaine
+
+Au-delà des auteurs dits classiques qui ont défini la notion de contre-transfert, plusieurs auteurs récents en soulignent la pertinence et l'actualité clinique. Par exemple, @gabbard2020role encourage les soignants en psychiatrie de prendre le contre-transfert en considération. @barros2020countertransference se sont intéressés au vécu de psychiatres et de psychologues qui s'occupent de délinquants sexuels. Ils mettent en évidence des corrélations positives et modérées entre les vécus d'indifférence et une échelle évaluant le traumatisme et une autre échelle évaluant des mécanismes de défense immatures. Ils invitent à être attentif aux ressentis des professionnels qui travaillent avec des patients qui ont commis des actes délictueux. @soulie2020systematic, @caputo2020telling, et @michaud2021countertransference se sont quant à eux intéressés aux vécus contre-transférentiels de professionnels qui s'occupent de patients suicidaires. Les questions qui portent sur le contre-transfert des soignants amènent d'ailleurs à aborder des thèmes connexes tels que le *burn-out*, le *trauma vicariant*, l'importance de *supervision* et de la *formation* des professionnels.
+
+@lheureux2005fil évoque la notion de *transfert de base* évoquée par @parat2000interview et mentionne que « Les psychosomaticiens insistent sur la distinction à faire entre la névrose de transfert classique (qui comprend le jeu transfert/contre-transfert) et la relation transféro/contre-transférentielle. »

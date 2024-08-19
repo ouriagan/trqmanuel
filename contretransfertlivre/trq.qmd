@@ -1,0 +1,46 @@
+# Le Questionnaire de Réponse Emotionnelle {#trq}
+
+Le TRQ est un questionnaire de 79 items mesurant un large éventail de *pensées*, de *sentiments* et de *comportements* exprimés par les thérapeutes envers leurs patients. Les items ont été dérivés de la littérature clinique, théorique et empirique sur le contre-transfert par @betan2005countertransference. Les items sont rédigés de manière simple et sans jargon pour que les thérapeutes de diverses orientations puissent utiliser l’outil de façon comparable. 
+Les items évaluent une gamme de réponses allant de sentiments spécifiques (exemple : "Je m’ennuie dans les séances avec lui/elle") à des constructions complexes comme l’identification projective (exemple : "Plus que pour la plupart des patients, j’ai l’impression d’avoir été entraîné dans des choses que je n’avais pas réalisées avant la fin des séances"). 
+Les cliniciens évaluent chaque élément sur une échelle de Likert allant de 1 (Pas du tout) à 5 (Tout à fait).  
+Nous nous sommes basés sur la traduction française du TRQ effectuée par @depage2016questionnaire.
+
+Mais que mesurent réellement ces 79 items ?
+
+
+## Fondements et études portant sur le TRQ 
+ 
+Dans sa version initiale, le TRQ était appelé le Countertransference Questionnaire. Cet outil a permis de mettre en commun l’expérience de dizaines de cliniciens et d’identifier des modèles communs de réactions de CT dans la pratique clinique. @betan2005countertransference ont demandé à 181 cliniciens de répondre aux questionnaires afin de pouvoir mesurer leurs réponses affectives, cognitives et comportementales à un(e) patient(e) non psychotique dont ils ont la charge. Afin de pouvoir étudier la structure factorielle du CT, les auteurs ont effectué une analyse en composantes principales et identifié le nombre de facteurs à soumettre à la rotation promax. L’analyse factorielle se révélant la plus judicieuse pour maximiser l’interprétabilité était celle comportant huit facteurs. Ces huit dimensions du contre-transfert présentées dans le Tableau \@ref(tab:betan-tab) étaient cohérentes sur le plan clinique et conceptuel.
+
+
+```{r include=FALSE}
+betandb <- data.frame(
+  Dimensions = c("Débordé / désorganisé", "Impuissant / insuffisant", "Positif", "Spécial / trop impliqué ", "Sexualisé", "Désengagé", "Parental / protecteur", "Critiqué / maltraité"),
+  Description = c("Désir d’éviter ou de fuir le patient, crainte, répulsion et ressentiment", "Inadéquation, incompétence, désespoir et anxiété", "Expérience d’une alliance et un travail positif plus lien étroit avec le patient", "Culpabilité, responsabilité et trop grande inquiétude envers le patient", "Sentiments sexuels envers le patient ou expérience de tension sexuelle", "Sentiment de distraction, de repli sur soi et ennui pendant les séances", "Désir 	de 	protéger 	et d’éduquer le patient d’une manière parentale", "Sentiment de ne pas être apprécié, rejeté ou dévalué par le patient")
+)
+```
+
+```{r betan-tab, tidy=FALSE, echo = FALSE}
+knitr::kable(
+  betandb, caption = 'Représentation des dimensions factorielles de la version américaine du TRQ',
+  booktabs = TRUE
+)
+```
+
+
+
+
+Il a également été demandé aux thérapeutes d’évaluer les *troubles de la personnalité* de leurs patients à l’aide d’une liste de vérification des critères de l’axe II du Manuel Diagnostique et statistique des troubles mentaux, quatrième édition (DSM-IV).  
+Les résultats ont montré que le groupe A (paranoïaque, schizoïde et schizotypique) était associé avec le facteur critiqué/maltraité ; le groupe B (antisocial, borderline, histrionique et narcissique) est corrélé avec les facteurs suivants : débordé/désorganisé, désengagé, à l’impuissance, à l’hostilité et à l’attraction sexuelle ; et le groupe C (évitant, dépendant, obsessionnel-compulsif) est associé avec le facteur parental et protecteur [@betan2005countertransference]. 
+Par la suite, deux études ont été menées en utilisant le TRQ pour vérifier si les modèles de réponses émotionnelles des thérapeutes étaient toujours liés aux troubles de la personnalité [@colli2014patient]. Ces mêmes chercheurs ont également voulu examiner si la gravité des symptômes des patients avait une influence sur le contre-transfert [@lingiardi2015does].  
+Cependant, à notre connaissance, seule cette équipe de chercheurs ainsi qu’une équipe suédoise ont vérifié les qualités psychométriques du TRQ. @tanzilli2016factor ont pu confirmer que la version italienne du TRQ est un instrument valide et fiable permettant d’évaluer les modèles de réponses de CT de façon cliniquement sensible et psychométriquement robuste, indépendamment des orientations thérapeutiques.  
+Les modèles de réponses des thérapeutes de la version italienne en comparaison à la version américaine ne contiennent pas de différence significative. A l’exception du facteur critiqué/maltraité (du modèle initial) qui a été divisé en deux nouveaux facteurs différents : hostile/en colère (caractérisé par des sentiments de colère, de ressentiment et d’irritation envers le patient) et critiqué/ dévalué (dénigré par le sentiment d’être critiqué, rejeté ou d’évalué.). Les auteurs donnent comme explication pour cette différence que le CT critiqué/maltraité de la version originale du CT était un modèle hétérogène des réactions de thérapeutes, incluant des états émotionnels distincts qui peuvent être évoqués par des patients ayant différents modes de fonctionnement interpersonnel.  
+En ce qui concerne la version suédoise du TRQ [@berg2019countertransference], la structure factorielle des études menées aux États-Unis et en Italie n’a pas été exactement confirmée.  
+Seuls quatre facteurs (impuissant/inadéquat, parental/protecteur, désengagé et sexualisé) ont été reproduits identiquement à la version américaine et italienne et un cinquième (hostile/ en colère) correspond à la version italienne. Les facteurs suivants : surchargé/désorganisé et spécial/trop impliqué présentaient des corrélations plus basses. Ces facteurs concernent les problèmes de cadre thérapeutique ainsi que des limites. Le premier étant de pouvoir imposer des limites au patient et le second des difficultés liées au fait de faire respecter ces limites. L’interprétation que donnent les auteurs à cette corrélation est le contexte culturel : les thérapeutes suédois seraient confrontés de manière plus explicite à des problèmes de limites par rapport aux échantillons de thérapeutes des études américaine et italienne [@betan2005countertransference; @tanzilli2016factor]. 
+Les cinq premiers facteurs cités quant à eux ressemblent aux analyses réalisées par les études précédentes et pourraient donc avoir des manifestations et des effets culturels plus stables.  
+Les auteurs soulignent également qu’il existe des différences factorielles entre l’étude américaine et italienne. Ils suggèrent donc que cela pourrait être également dû au contexte culturel. Deux facteurs n’ont pas été répliqués : positif et critiqué/maltraité. Cependant, le facteur hostile/colère a montré une forte corrélation avec le critiqué/maltraité de l’étude de @betan2005countertransference et avec le facteur critiqué/ dévalué de l’étude de @tanzilli2016factor. 
+Cela suggérait que ces facteurs contiennent un phénomène similaire.  
+En ce qui concerne la perte du facteur positif, les auteurs l’attribuent aux différences entre les échantillons dans les différentes études. Dans les versions américaine et italienne, il y avait davantage de thérapeutes travaillant dans des environnements indépendants que dans l’étude suédoise.  	 
+Les auteurs ont pu mettre en lumière que les thérapeutes travaillant en institution semblaient éprouver davantage de détresse et d’épuisement professionnel.  
+Les chercheurs ont également identifié que certains groupes de thérapeutes présentaient des niveaux plus élevés de contre-transfert auto-rapporté. Les thérapeutes masculins, à orientation psychodynamique, les jeunes ou moins expérimentés ainsi que les thérapeutes travaillant ailleurs que dans le secteur privé, ont tous signalé plus de contre-transfert que les femmes, les thérapeutes cognitivo-comportementalistes les plus âgés ou plus expérimentés et travaillant dans le secteur privé.  
+@berg2019countertransference, indiquent que la charge de travail du thérapeute n’a eu aucun effet significatif sur le CT pas plus que l’âge ou le sexe du patient, ni l’éducation du thérapeute. Les recherches semblent également indiquer que les caractéristiques du thérapeute contribuent au contre-transfert et non celles du patient.   

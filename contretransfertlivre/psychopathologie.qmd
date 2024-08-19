@@ -1,0 +1,250 @@
+# Approche psychopathologique {#psychopathologie}
+
+```{r, echo = FALSE, include=FALSE}
+library(psych) 
+library(sem) 
+library(GPArotation) 
+library(parallel) 
+library(corrplot) 
+library(dplyr)
+library(eRm)
+library("mirt")
+library(prettyR)
+library(ggplot2)
+library(papaja)
+library("Hmisc") 
+library(readr)
+ct <- read_delim("~/OneDrive/TRQ/synthesect.csv",";", escape_double = FALSE, trim_ws = TRUE)
+attach(ct) 
+f.groupe <- factor(groupe, labels=c("Détenus",
+"Patients en ambulatoire"))
+f.internalisation <- factor(internalisation, labels = c("Absent","Peu présent", "Présent", "Très présent"), ordered = T)
+f.troubledelapensee <- factor(troubledelapensee, labels = c("Absent","Peu présent", "Présent", "Très présent"), ordered = T)
+f.desinhibition <- factor(desinhibition, labels = c("Absent","Peu présent", "Présent", "Très présent"), ordered = T)
+f.antagonisme <- factor(antagonisme, labels = c("Absent","Peu présent", "Présent", "Très présent"), ordered = T)
+f.detachement <- factor(detachement, labels = c("Absent","Peu présent", "Présent", "Très présent"), ordered = T)
+f.somatoforme <- factor(somatoforme, labels = c("Absent","Peu présent", "Présent", "Très présent"), ordered = T)
+psychopathologie.df <- data.frame(Groupe=f.groupe, Internalisation=internalisation, "Trouble de la pensée"=troubledelapensee, "Désinhibition"=desinhibition, "Antagonisme"=antagonisme, "Détachement"=detachement, "Somatoforme"=somatoforme)
+
+# Nombre de détenus
+numdetenus <- ct %>%
+     filter(groupe == 1) %>%
+     summarise(N = n())
+# Nombre de patients
+numpatients <- ct %>%
+     filter(groupe == 2) %>%
+     summarise(N = n())
+# Nombre de détenus qui souffrent
+numdetenussouffrants <- ct %>%
+     filter(groupe == 1) %>%
+     filter(internalisation > 1) %>%
+     summarise(N = n())
+# Pourcentage de détenus qui souffrent
+numdetenussouffrantspc <- round((numdetenussouffrants/numdetenus)*100, 0) 
+
+# Nombres de détenus qui consomment
+numdetenusdesinhibition <- ct %>%
+     filter(groupe == 1) %>%
+     filter(desinhibition > 1) %>%
+     summarise(N = n())
+# Pourcentage de détenus qui consomment
+numdetenusdesinhibitionpc <- round((numdetenusdesinhibition/numdetenus)*100, 0) 
+
+# U de Mann-Whitney
+  # internalisation
+internalisation_groupe <- wilcox.test(internalisation~f.groupe) 
+internalisation_groupepvalue <- round(internalisation_groupe$p.value,  digit = 3) 
+internalisation_groupestatistic <- round(internalisation_groupe$statis,  digit = 3)
+  # antagonisme
+antagonisme_groupe <- wilcox.test(antagonisme~f.groupe) 
+antagonisme_groupepvalue <- round(antagonisme_groupe$p.value,  digit = 3) 
+antagonisme_groupestatistic <- round(antagonisme_groupe$statis,  digit = 3)
+  # desinhibition
+desinhibition_groupe <- wilcox.test(desinhibition~f.groupe) 
+desinhibition_groupepvalue <- round(desinhibition_groupe$p.value,  digit = 3) 
+desinhibition_groupestatistic <- round(desinhibition_groupe$statis,  digit = 3)
+  # detachement
+detachement_groupe <- wilcox.test(detachement~f.groupe) 
+detachement_groupepvalue <- round(detachement_groupe$p.value,  digit = 3) 
+detachement_groupestatistic <- round(detachement_groupe$statis,  digit = 3)
+  # Troubles de la pensée
+troubledelapensee_groupe <- wilcox.test(troubledelapensee~f.groupe) 
+troubledelapensee_groupepvalue <- round(troubledelapensee_groupe$p.value,  digit = 3) 
+troubledelapensee_groupestatistic <- round(troubledelapensee_groupe$statis,  digit = 3)
+  # somatoforme
+somatoforme_groupe <- wilcox.test(somatoforme~f.groupe) 
+somatoforme_groupepvalue <- round(somatoforme_groupe$p.value,  digit = 3) 
+somatoforme_groupestatistic <- round(somatoforme_groupe$statis,  digit = 3)
+
+# Styles de contre-transfert
+impuissance <- (item8+item12+item22+item30+item5+item39+item59+item46+item15+item34+item13+item52+item68+item6+item45+item58+item36+item51+item75+item35+item63+item77+item10+item16+item25+item29+item26+item31+item24+item18+item49)/31
+transgression <- ((6-item65)+(6-item53)+(6-item3)+(6-item4)+(6-item1)+item8+item12+item22+item30+item5+item39+item59+item46+item15+item34+item13+item2+item52+item68+item6+item45+item58+item36+item51+item75+item33+item35+item78+item55+item63+item44+item57+item77+item10+item37+item70+item11+item60)/38 
+hostilite <- (item8+item12+item22+item30+item5+item39+item59+item46+item15+item34+item13+item2+item52+item6+item45+item58+item51+item27+item75+item33+item35+item55+item48+item63+item44+item57+item37+item55+item48+item63+item44+item57+item43)/33
+sexualisation <- (item17+item61+item32)/3 
+negatif <- ((6-item53)+(6-item1)+item8+item12+item22+item30+item5+item39+item59+item46+item15+item34+item13+item2+item52+item68+item6+item45+item58+item36+item51+item27+item75+item33+item35+item78+item55+item48+item63+item44+item57+item77+item10+item16+item37+item70+item11+item25+item29+item26+item62+item31+item60+item24+item43)/45
+positif <- (item65+item53+item19+item23+item74+item40+item42+item3+item4+item64+item21+item7+item47+item69+item79+item56+item28+item66+item67+item71+item76)/21
+
+troubles.df <- data.frame(internalisation, troubledelapensee, desinhibition, antagonisme, detachement, somatoforme)
+ctstyles.df <- data.frame(positif, negatif, impuissance, transgression, hostilite, sexualisation) 
+
+# corrélations
+cttroublescor <- cor(troubles.df, ctstyles.df, method = "spearman", use = "complete.obs") 
+round(cttroublescor, 2) 
+# corrplot(cttroublescor, tl.col = "black", tl.srt = 45) 
+res1 <- cor.mtest(cttroublescor, conf.level = .95) #prise en compte des seuils de significativité à .05
+```
+
+Il existe de nombreuses manière d'évaluer les éventuels troubles psychopathologiques de patients. Les différentes versions du *Diagnostic and statistical manual of mental disorders* [@american2013diagnostic] permettent des diagnostics reconnnus dans les publications scientifiques internationales et constituent dès lors des références classiques. Toutefois l'approche proposée par le dernier DSM a fait l'objet de vives critiques qui proposent des modèles alternatifs. L'un de ces modèles est un modèle dimensionnel appelé *Hierarchical Taxonomy of Psychopathology* (HiTOP) proposé par @kotov2017hierarchical
+Dans ce modèle, les troubles psychopathologiques ne sont pas soit présents soit absents (approche catégorielle) mais peuvent être situés sur un continuum pathologique allant de l'absence d'un trouble à une présence très notable. Dans la pratique clinique, les patients peuvent d'ailleurs souffrir de plusieurs troubles de la personnalité appartenant à différents groupes ; ce qui vient engendrer des problèmes au sein de la littérature scientifique, et ce, plus particulièrement au sein des études concernant la comorbidité et dans le besoin de recourir plus souvent aux catégories des troubles « non spécifiés ». L’approche du DSM considérant chaque diagnostic comme étant catégoriel et séparé des autres troubles ne permet pas de retranscrire les comorbidités existantes et démontrent que de nombreux symptômes et facteurs de risque sont communs en psychiatrie.  
+Les troubles mentaux sont hétérogènes, il est donc important de pouvoir évaluer la personnalité sur un plan multidimensionnel car la connaissance du niveau de fonctionnement de la personnalité d’un sujet ainsi que son profil pathologique de traits de personnalités apportent des informations riches et variables quant à la planification d’un traitement éventuel, ainsi que pour la planification de l’évolution et l’issue de nombreux troubles mentaux et de la personnalité. Le clinicien pourra se baser sur le profil de la personnalité, afin de pouvoir orienter ses entretiens et découvrir quel type de problèmes est source de détresse chez la personne. On aura également une meilleure compréhension des points forts et des points faibles de la personne permettant d’établir un meilleur diagnostic ainsi qu’une meilleure compréhension de la dynamique du patient et de son potentiel [@de2018personnalites;@kotov2018paradigm;@krueger2018progress;@ruggero2019disquiet;@sellbom2020role;@waszczuk2017hierarchical].
+
+
+## Présentation générale de l'HITOP 
+
+Ce modèle de *Taxonomie hiérarchique de la psychopathologie* (en français) est structuré de manière hiérarchique tel que présenté dans la Figure \@ref(fig:fig-hitop). Chaque niveau comprend un niveau sous-jacent [@kotov2017hierarchical;@krueger2012initial;@micoulaud2019vers]. 
+
+```{r fig-hitop, echo = FALSE, fig.cap = 'Taxonomie hiérarchique de la psychopathologie'}
+knitr::include_graphics(rep("hitop.png"))
+```
+
+
+Le modèle identifie six *spectres* :  
+
+-	**intériorisation** (affectivité négative) ; 
+-	**trouble de la pensée** ( psychoticisme) ; 
+-	**extériorisation désinhibée** ; 
+-	**extériorisation antagoniste** ; 
+-	**détachement** ; 
+-	**somatoforme**. 	 
+ 
+Ces spectres donnant la dimensionnalité au modèle sont ensuite davantage précisés en :
+
+-	sous-facteurs ;  
+-	syndromes/troubles (similaires aux troubles du DSM) ; 
+-	traits, signes et symptômes observés. 
+ 
+ 
+Les deux spectres majeurs identifiés par le modèle, sont la dimension *internalisante*  et *externalisante* à côté desquels existent d'autres spectres. 
+
+## Description des spectres de l'HITOP 
+
+### Troubles de l'internalisation
+
+La dimension **internalisante** renvoie aux *troubles émotionnels* tels que la *dépression*, l’*anxiété*, les *traumatismes*, les *troubles obsessionnels compulsifs* et les *pathologies alimentaires*. 
+ce spectre est donc lié aux émotions négatives qui suscitent de la *souffrance* chez la personne. Cette dernière fait état d’anxiété, des peurs, de tristesse, de problèmes sexuels, de troubles de l’alimentation ou de vécus traumatiques. Le patient est souvent conscient de ces symptômes, les reconnaît comme siens et en souffre. 
+
+La Figure \@ref(fig:internalisation-fig) représente la fréquence des troubles d'internalisation auprès d'un groupe de `r numdetenus` détenus et de `r numpatients` patients suivis en thérapie ambulatoire.
+
+```{r internalisation-fig, fig.cap='Internalisation', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE, message=FALSE, warning=FALSE}
+# ggplot(psychopathologie.df, aes(x=internalisation, color=f.groupe)) +
+#      geom_histogram(bins = 4, fill="white", alpha=0.5, position="identity")+scale_x_manual(values=c("Absent","Un peu présent","Présent","Très présent"))
+
+ggplot(psychopathologie.df, aes(x = internalisation, fill = f.groupe)) +
+  geom_histogram(bins = 4, alpha = 0.5, position = "identity") + labs(x="Gravité des troubles d'internalisation", y = "Fréquences")
+
+```
+
+Nous constatons qu'il existe bien plus de troubles internalisés au sein du groupe des patients suivis en ambulatoire qu'au sein du groupe de détenus (*U* de Mann-Whitney = `r internalisation_groupe$statis`, *p* `r printp(internalisation_groupepvalue)`). Cela n'est pas une réelle surprise car nous pouvons aisément supposer que les personnes qui entament une démarche thérapeutique auprès d'un professionnel présentent une certaine souffrance personnelle qui les amène à chercher un changement personnel. Les détenus, quant à eux, sont en détention sur décision d'un tribunal suite à des comportements estimés illicites. Il n'est pas évident que ces derniers soient liés à une souffrance psychique consciente. Les détenus ne sont dès lors pas considérés a priori comme étant en souffrance psychologique. La Figure \@ref(fig:internalisation-fig) semble confirmer que les détenus expriment moins de souffrance personnelle que des patients ambulatoires. La plupart n'en présentent d'ailleurs pas. Notons toutefois que certains détenus présentent une souffrance personnelle nettement présente. Dans notre groupe de détenus, `r numdetenussouffrantspc`% d'entre eux obtiennent une note égale à 2 ou 3 à l'échelle d'internalisation, ce qui n'est pas négligeable. 
+
+
+### Troubles de l'externalisation
+
+La dimension **externalisante** renvoie quant à elle principalement à des comportements inadapté tels que les problèmes de *consommation de substances*, les *comportements antisociaux*, la *défiance oppositionnelle*, le *comportement explosif* intermittent et l’*hyperactivité* avec *déficit de l’attention*. 
+
+
+#### Externalisation antagoniste
+
+l’extériorisation antagoniste renvoie à des *relations conflictuelles avec les autres* et avec la *société* en général. Le patient entretient des interactions sociales mais sur le mode du *conflit* ou du *reproche*. Il blâme souvent autrui de ses difficultés personnelles. Les comportements qu’il produit visent à blesser intentionnellement l'autre ou mènent à se sentir en rivalité avec lui. Le patient peut adopter des *comportements illégaux*. 
+
+La Figure \@ref(fig:antagonisme-fig) représente la fréquence des troubles d'antagonisme auprès d'un groupe de `r numdetenus` détenus et de `r numpatients` patients suivis en thérapie ambulatoire.
+
+```{r antagonisme-fig, fig.cap='Antagonisme', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE, message=FALSE, warning=FALSE}
+
+ggplot(psychopathologie.df, aes(x = antagonisme, fill = f.groupe)) +
+  geom_histogram(bins = 4, alpha = 0.5, position = "identity") + labs(x="Gravité des troubles d'antagonisme", y = "Fréquences")
+```
+De manière quelque peu suprenante, nous ne mettons pas en évidence de nette différence entre le groupe des patients suivis en ambulatoire et le groupe de détenus concernant le trouble de l'externalisation antagoniste (*U* de Mann-Whitney = `r antagonisme_groupe$statis`, *p* = `r printp(antagonisme_groupepvalue)`). Il y a d'ailleurs plus de patients qui ont obtenu le score de 3 que de détenus. Il est possible que les cliniciens qui travaillent dans un cadre ambulatoire estiment certains comportements du patient plus rapidement problématique que les cliniciens qui travaillent quotidiennement dans un cadre carcéral. Ceci à titre d'hypothèse. Ceci dit, la plupart des détenus obtiennent une note de 2 alors que les patients ambulatoire obtiennent une note de 0. Nos résultats amènent à penser que ces troubles d'antagonisme ne sont pas rares dans les prises en charges psychologiques.
+
+#### Externalisation par désinhibition
+
+La désinhibition externalisante renvoie à un *manque d’autocontrôle*. Des *actions impulsives* sont constatées sans aucune considération des conséquences. Le sujet peut dès lors être *imprudent* et prendre des décisions téméraires. La désinhibition est souvent en lien avec la *consommation de substances* (alcool ou drogues). 
+
+La Figure \@ref(fig:desinhibition-fig) représente la fréquence des troubles de désinhibition auprès d'un groupe de `r numdetenus` détenus et de `r numpatients` patients suivis en thérapie ambulatoire.
+
+```{r desinhibition-fig, fig.cap='Désinhibition', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE, message=FALSE, warning=FALSE}
+
+ggplot(psychopathologie.df, aes(x = desinhibition, fill = f.groupe)) +
+  geom_histogram(bins = 4, alpha = 0.5, position = "identity") + labs(x="Gravité des troubles de désinhibition", y = "Fréquences")
+``` 
+
+Nous constatons qu'il existe bien moins de troubles de désinhibition au sein du groupe des patients suivis en ambulatoire qu'au sein du groupe de détenus (*U* de Mann-Whitney = `r desinhibition_groupe$statis`, *p* `r printp(desinhibition_groupepvalue)`). Ce résultat s'explique probablement par une fréquence de consommation d'alcool et de drogues supérieure dans le milieu carcéral. @fazel2017substance se sont intéressés aux prévalences de troubles liés à l'alcool et aux substances dans une méta-analyse. Sur base de 24 études (impliquant 18388 détenus dans dix pays),  la prévalence d'un trouble de consommation d'alcool était de 24%. Elle s'étalait de 16 à 51% pour les hommes et de 10 à 30% pour les femmes détenues. Concernant les troubles de consommation de drogues, ils étaient estimés à 30% pour les hommes et à 51% pour les femmes détenus.
+Dans notre groupe de détenus, `r numdetenusdesinhibitionpc`% présenteraient des comportements présents (note = 2) ou très présents (note 3) de perte de contrôle, souvent liés à des consommations d'alcool ou de drogues. 
+
+
+### Troubles du détachement
+
+Le spectre du **détachement** se caractérise par un *évitement relationnel et émotionnel* qui se traduit par un *retrait social* avec une tendance à être isolé ainsi qu’à avoir des relations de qualité inférieures ou peu profondes. Le patient peut éviter le contact voire s’enfermer chez lui pour éviter toute stimulation relationnelle. 
+Il se rapporte aux troubles de la *personnalité schizoïde*, *histrionique* ainsi qu’au trouble de la *personnalité évitante* du DSM [@american2013diagnostic].
+
+La Figure \@ref(fig:detachement-fig) représente la fréquence des troubles de détachement auprès d'un groupe de `r numdetenus` détenus et de `r numpatients` patients suivis en thérapie ambulatoire.
+
+```{r detachement-fig, fig.cap='Détachement', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE, message=FALSE, warning=FALSE}
+
+ggplot(psychopathologie.df, aes(x = detachement, fill = f.groupe)) +
+  geom_histogram(bins = 4, alpha = 0.5, position = "identity") + labs(x="Gravité des troubles de détachement", y = "Fréquences")
+``` 
+
+Nous ne mettons pas en évidence de nette différence entre le groupe des patients suivis en ambulatoire et le groupe de détenus concernant le trouble de détachement (*U* de Mann-Whitney = `r detachement_groupe$statis`, *p* = `r printp(detachement_groupepvalue)`). 
+
+
+### Troubles de la pensée
+
+Le spectre des **troubles de la pensée** renvoie aux *bizarreries idéationnelles* souvent incomprises par autrui, à un *contact perturbé avec la réalité extérieure*, à des *phénomènes hallucinatoires ou délirants*. Il s'agit de troubles traditionnellement reconnus commes *psychotiques*. 
+
+La Figure \@ref(fig:troubledelapensee-fig) représente la fréquence des troubles de la pensée auprès d'un groupe de `r numdetenus` détenus et de `r numpatients` patients suivis en thérapie ambulatoire.
+
+```{r troubledelapensee-fig, fig.cap='Trouble de la pensée', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE, message=FALSE, warning=FALSE}
+
+ggplot(psychopathologie.df, aes(x = troubledelapensee, fill = f.groupe)) +
+  geom_histogram(bins = 4, alpha = 0.5, position = "identity") + labs(x="Gravité des troubles de troubles de la pensée", y = "Fréquences")
+``` 
+
+Concernant les troubles de la pensée, il existe une différence significative entre le groupe des patients suivis en ambulatoire et le groupe de détenus concernant le trouble de détachement (*U* de Mann-Whitney = `r troubledelapensee_groupe$statis`, *p* = `r printp(troubledelapensee_groupepvalue)`). En effet, nous retrouvons plus de détenus qui présentent ces troubles que les patients ambulatoires. Ce résultat pourrait paraître contre-intuitif puisque les prisons ne sont pas des structures de soins mais renvoie à une réalité sociologique : les prisons accuillent des personnes souvent socialement marginalisées et qui présentent des symptômes psychotiques non détectés ou traités jusqu'alors. @fazel2012severe ont réalisé une méta-analyse basée sur 109 échantillons impliquant 33 588 détenus  dans 24 pays et ont constaté des prévalences de troubles psychotiques pour 3.6% des détenus hommes et 3.9% des détenues femmes. Ce constat, bien qu'interpellant, est donc mondial. 
+
+### Troubles somatoformes
+
+Le spectre **somatoforme** est une nouvelle dimension qui a été incluse provisoirement dans le modèle, car certaines études pouvaient définir le spectre clairement et d’autres non mais à priori à cause de problèmes méthodologiques [@kotov2017hierarchical;@krueger2018progress;@watson2020personality]. 
+Il renvoie à la manifestation de symptômes somatiques liés à un trouble et qui suscitent de l'inquiétude ou de la souffrance chez le patient. 
+
+La Figure \@ref(fig:somatoforme-fig) représente la fréquence des troubles somatoformes auprès d'un groupe de `r numdetenus` détenus et de `r numpatients` patients suivis en thérapie ambulatoire.
+
+```{r somatoforme-fig, fig.cap='Somatoforme', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE, message=FALSE, warning=FALSE}
+
+ggplot(psychopathologie.df, aes(x = somatoforme, fill = f.groupe)) +
+  geom_histogram(bins = 4, alpha = 0.5, position = "identity") + labs(x="Gravité des troubles de troubles somatoformes", y = "Fréquences")
+``` 
+
+Il existe une différence significative entre le groupe des patients suivis en ambulatoire et le groupe de détenus concernant les troubles somatoforme (*U* de Mann-Whitney = `r somatoforme_groupe$statis`, *p* = `r printp(somatoforme_groupepvalue)`). En effet, les patients traités en ambulatoire rapporteraient plus de troubles somatiques que les détenus.
+
+## Troubles psychopathologiques et contre-transfert
+
+Existe-t-il un lien entre les troubles psychologiques dont souffrirait un patient et la réponse émotionnelle du clinicien ? Les études de @betan2005countertransference et @tanzilli2016factor avaient déjà répondu positivement à cette question sur base de diagnostics de troubles de la personnalité du DSM-IV [@american1980dsm] (ils avaient fait le choix d'écarter des études les troubles psychotiques).
+Pour notre part, notre outil d'évaluation de la psychopathologie inclut les troubles psychiatriques plus sévères tels que les troubles psychotiques ou dépressifs.Le champ d'investigation est dès lors plus large et plus exhaustif même si les spectres rassemblent des symptômes parfois divers.
+Quels sont les liens entre la gravité de ces spectres et le ressenti des cliniciens ? La Figure \@ref(fig:cttroublescor-fig) représente une matrice de corrélations (Rho de Spearman, c'est-à-dire une corrélation non paramétrique) qui répond à cette question. Seules les corrélations significatives à *p* < .05 apparaissent dans la matrice.
+
+```{r cttroublescor-fig, fig.cap='Corrélations entre les troubles psychopathologiques et le contre-transfert', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE, message=FALSE, warning=FALSE}
+
+corrplot(cttroublescor,p.mat = res1$p, insig = "blank", method="number") #les corrélations non significatives à .05 sont blanches 
+``` 
+
+Rappelons ici qu'une matrice de corrélations renvoie à des liens de contingence mais pas de cause à effet. On pourrait supposer qu'un trouble du patient induit une réponse émotionnelle du clinicien mais nous ne pouvons exclure que l'état émotionnel du patient lui fasse consciemment ou non attribuer un trouble psychiatrique au patient. Nous discuterons de ce point plus loin.
+Que constatons-nous ?
+
+
+| Troubles                          | Contre-transfert |
+|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Internalisation | D'abord que lorsque les patients présentent un niveau de souffrance liée à des caractéristiques personnelle plus élevé, le clinicien ressent le lien thérapeutique plus solide, plus chaleureux et plus constructif. En parallèle, les ressentis négatifs susceptibles de perturber l'alliance thérapeutique sont plus rares. Le clinicien se sent plus compétent à aider la patient, se sent reconnu dans sa position clinique, respecte le cadre thérapeutique et ne se sent pas en conflit avec la patient. Il semble exister un écho entre la souffrance interne du patient et l'impression du thérapeute d'être capable d'y donner une réponse adéquate et bénéfique.                                                       |
+| Externalisation antagoniste | La situation inverse concerne les patients qui ont tendance à externaliser la source de leur ressentis négatifs. Ces patients se plaignent mais de causes externes, ce qui suscite de la frustration, de l'irritation, de la colère ou des comportements organisés qui portent atteinte à l'ordre social et aux lois. Cette externalisation des causes de la souffrance va de pair avec un ressenti plus négatif et désagréable chez le clinicien (c'est la corrélation la plus élevé de la matrice). Le clinicien éprouve des difficultés à créer un lien positif et constructif avec le patient malgré ses efforts. Il a l'impression d'être souvent en désaccord avec la patient, ce qui réveille ses propres frustrations et ses impressions de ne pas être à la hauteur de la prise en charge. Le clinicien se sent alors moins compétent et se met à penser qu'un autre professionnel s'en sortirait mieux que lui. Les critiques récurrentes du patient à l'encontre du monde extérieur vécu comme maltraitant et injuste trouve un écho chez le clinicien qui en vient à se sentir en conflit avec la patient ou à tout le moins en dissonance avec lui. Ses tentatives de créer un lien minimal l'amène à aménager le cadre thérapeutique quitte à faire ou dire des choses inhabituelles. Le clinicien se retrouve alors parfois à transgression les règles de son propre cadre thérapeutique. Lorsqu'il s'en rend compte, il en éprouve un inconfort qui ravive sa conviction de ne pas être suffisamment compétent. La tendance est alors - de manière consciente ou non - d'espacer les séances voire de mettre un terme à la relation thérapeutique. |
+| Externalisation par désinhibition | Les troubles en lien avec la perte de maîtrise avec consommation de drogues ou d'alcool s'accompagnent de ressentis similaires que les troubles antagonistes mais de manière moins prononcée. La difficulté de nouer un lien de confiance et positif est également présent ainsi qu'une impression d'être moins compétent et d'envisager un pronostic de manière plus sombre. Il existe dès lors un tendance à espérer une fin prématurée de la prise en charge afin d'aider des patients qui profiteraient mieux du cadre thérapeutique. |
+| Détachement | Lorsque des patients présentent des troubles de détachement, nous constatons une tendance du clinicien à nouer un lien positif avec eux. Il est probable que le clinicien tente de construire progressivement un lien positif avec ces patients qui ont une tendance personnelle à s'isoler voire à rompre les liens. |
+| Troubles somatoformes | Au vu de nos données, il n'existerait pas de lien clair entre les plaintes somatiques des patients et les ressentis des cliniciens. |

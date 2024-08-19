@@ -1,0 +1,25 @@
+project:
+  type: book
+
+book:
+  title: "Le contre-transfert : une approche empirique"
+  author: "Benjamin Thiry et Louis De Page"
+  date: "22/07/2024"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - historique.qmd
+    - trq.qmd
+    - psychometrique.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: ct.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual

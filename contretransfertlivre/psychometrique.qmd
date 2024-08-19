@@ -1,0 +1,473 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# Approche psychométrique {#psychometrique}
+
+```{r, echo = FALSE, include=FALSE}
+library(psych) 
+library(sem) 
+library(DiagrammeR)
+library(GPArotation) 
+library(parallel) 
+library(corrplot) 
+library(plyr)
+library(eRm)
+library("mirt")
+library(prettyR)
+library(ggplot2)
+library("papaja")
+library("Hmisc") 
+library(readr)
+ct <- read_delim("~/OneDrive/TRQ/synthesect.csv","\t", escape_double = FALSE, trim_ws = TRUE)
+attach(ct) 
+
+genre2 <- mapvalues(genre, from = c("-1", "1"), to = c("Homme", "Femme"))
+groupe2 <- mapvalues(groupe, from = c("1", "2"), to = c("Détenus", "Patients"))
+
+item1R <- (6-item1)
+item2R <- (6-item2)
+item3R <- (6-item3)
+item4R <- (6-item4) 
+item5R <- (6-item5) 
+item6R <- (6-item6) 
+item7R <- (6-item7) 
+item8R <- (6-item8) 
+item9R <- (6-item9) 
+item10R <- (6-item10) 
+item11R <- (6-item11) 
+item12R <- (6-item12) 
+item13R <- (6-item13) 
+item14R <- (6-item14) 
+item15R <- (6-item15) 
+item16R <- (6-item16) 
+item17R <- (6-item17) 
+item18R <- (6-item18) 
+item19R <- (6-item19) 
+item20R <- (6-item20) 
+item21R <- (6-item21) 
+item22R <- (6-item22) 
+item23R <- (6-item23) 
+item24R <- (6-item24) 
+item25R <- (6-item25) 
+item26R <- (6-item26) 
+item27R <- (6-item27) 
+item28R <- (6-item28) 
+item29R <- (6-item29) 
+item30R <- (6-item30) 
+item31R <- (6-item31) 
+item32R <- (6-item32) 
+item33R <- (6-item33) 
+item34R <- (6-item34) 
+item35R <- (6-item35) 
+item36R <- (6-item36) 
+item37R <- (6-item37) 
+item38R <- (6-item38) 
+item39R <- (6-item39) 
+item40R <- (6-item40) 
+item41R <- (6-item41) 
+item42R <- (6-item42) 
+item43R <- (6-item43) 
+item44R <- (6-item44) 
+item45R <- (6-item45) 
+item46R <- (6-item46) 
+item47R <- (6-item47) 
+item48R <- (6-item48) 
+item49R <- (6-item49) 
+item50R <- (6-item50) 
+item51R <- (6-item51) 
+item52R <- (6-item52) 
+item53R <- (6-item53) 
+item54R <- (6-item54) 
+item55R <- (6-item55) 
+item56R <- (6-item56) 
+item57R <- (6-item57) 
+item58R <- (6-item58) 
+item59R <- (6-item59) 
+item60R <- (6-item60) 
+item61R <- (6-item61) 
+item62R <- (6-item62) 
+item63R <- (6-item63) 
+item64R <- (6-item64) 
+item65R <- (6-item65) 
+item66R <- (6-item66) 
+item67R <- (6-item67) 
+item68R <- (6-item68) 
+item69R <- (6-item69) 
+item70R <- (6-item70) 
+item71R <- (6-item71) 
+item72R <- (6-item72) 
+itemR73 <- (6-item73) 
+item74R <- (6-item74) 
+item75R <- (6-item75) 
+item76R <- (6-item76)
+item77R <- (6-item77)
+itemR78 <- (6-item78) 
+item79R <- (6-item79)
+
+itempsychiatre1R <- (6-itempsychiatre1)
+itempsychiatre2R <- (6-itempsychiatre2)
+itempsychiatre3R <- (6-itempsychiatre3)
+itempsychiatre4R <- (6-itempsychiatre4) 
+itempsychiatre5R <- (6-itempsychiatre5) 
+itempsychiatre6R <- (6-itempsychiatre6) 
+itempsychiatre7R <- (6-itempsychiatre7) 
+itempsychiatre8R <- (6-itempsychiatre8) 
+itempsychiatre9R <- (6-itempsychiatre9) 
+itempsychiatre10R <- (6-itempsychiatre10) 
+itempsychiatre11R <- (6-itempsychiatre11) 
+itempsychiatre12R <- (6-itempsychiatre12) 
+itempsychiatre13R <- (6-itempsychiatre13) 
+itempsychiatre14R <- (6-itempsychiatre14) 
+itempsychiatre15R <- (6-itempsychiatre15) 
+itempsychiatre16R <- (6-itempsychiatre16) 
+itempsychiatre17R <- (6-itempsychiatre17) 
+itempsychiatre18R <- (6-itempsychiatre18) 
+itempsychiatre19R <- (6-itempsychiatre19) 
+itempsychiatre20R <- (6-itempsychiatre20) 
+itempsychiatre21R <- (6-itempsychiatre21) 
+itempsychiatre22R <- (6-itempsychiatre22) 
+itempsychiatre23R <- (6-itempsychiatre23) 
+itempsychiatre24R <- (6-itempsychiatre24) 
+itempsychiatre25R <- (6-itempsychiatre25) 
+itempsychiatre26R <- (6-itempsychiatre26) 
+itempsychiatre27R <- (6-itempsychiatre27) 
+itempsychiatre28R <- (6-itempsychiatre28) 
+itempsychiatre29R <- (6-itempsychiatre29) 
+itempsychiatre30R <- (6-itempsychiatre30) 
+itempsychiatre31R <- (6-itempsychiatre31) 
+itempsychiatre32R <- (6-itempsychiatre32) 
+itempsychiatre33R <- (6-itempsychiatre33) 
+itempsychiatre34R <- (6-itempsychiatre34) 
+itempsychiatre35R <- (6-itempsychiatre35) 
+itempsychiatre36R <- (6-itempsychiatre36) 
+itempsychiatre37R <- (6-itempsychiatre37) 
+itempsychiatre38R <- (6-itempsychiatre38) 
+itempsychiatre39R <- (6-itempsychiatre39) 
+itempsychiatre40R <- (6-itempsychiatre40) 
+itempsychiatre41R <- (6-itempsychiatre41) 
+itempsychiatre42R <- (6-itempsychiatre42) 
+itempsychiatre43R <- (6-itempsychiatre43) 
+itempsychiatre44R <- (6-itempsychiatre44) 
+itempsychiatre45R <- (6-itempsychiatre45) 
+itempsychiatre46R <- (6-itempsychiatre46) 
+itempsychiatre47R <- (6-itempsychiatre47) 
+itempsychiatre48R <- (6-itempsychiatre48) 
+itempsychiatre49R <- (6-itempsychiatre49) 
+itempsychiatre50R <- (6-itempsychiatre50) 
+itempsychiatre51R <- (6-itempsychiatre51) 
+itempsychiatre52R <- (6-itempsychiatre52) 
+itempsychiatre53R <- (6-itempsychiatre53) 
+itempsychiatre54R <- (6-itempsychiatre54) 
+itempsychiatre55R <- (6-itempsychiatre55) 
+itempsychiatre56R <- (6-itempsychiatre56) 
+itempsychiatre57R <- (6-itempsychiatre57) 
+itempsychiatre58R <- (6-itempsychiatre58) 
+itempsychiatre59R <- (6-itempsychiatre59) 
+itempsychiatre60R <- (6-itempsychiatre60) 
+itempsychiatre61R <- (6-itempsychiatre61) 
+itempsychiatre62R <- (6-itempsychiatre62) 
+itempsychiatre63R <- (6-itempsychiatre63) 
+itempsychiatre64R <- (6-itempsychiatre64) 
+itempsychiatre65R <- (6-itempsychiatre65) 
+itempsychiatre66R <- (6-itempsychiatre66) 
+itempsychiatre67R <- (6-itempsychiatre67) 
+itempsychiatre68R <- (6-itempsychiatre68) 
+itempsychiatre69R <- (6-itempsychiatre69) 
+itempsychiatre70R <- (6-itempsychiatre70) 
+itempsychiatre71R <- (6-itempsychiatre71) 
+itempsychiatre72R <- (6-itempsychiatre72) 
+itempsychiatreR73 <- (6-itempsychiatre73) 
+itempsychiatre74R <- (6-itempsychiatre74) 
+itempsychiatre75R <- (6-itempsychiatre75) 
+itempsychiatre76R <- (6-itempsychiatre76)
+itempsychiatre77R <- (6-itempsychiatre77)
+itempsychiatreR78 <- (6-itempsychiatre78) 
+itempsychiatre79R <- (6-itempsychiatre79)
+
+# Niveau I
+ctitems <- data.frame(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12, item13, item14, item15, item16, item17, item18, item19, item20, item21, item22, item23, item24, item25, item26, item27, item28, item29, item30, item31, item32, item33, item34, item35, item36, item37, item38, item39, item40, item41, item42, item43, item44, item45, item46, item47, item48, item49, item50, item51, item52, item53, item54, item55, item56, item57, item58, item59, item60, item61, item62, item63, item64, item65, item66, item67, item68, item69, item70, item71, item72, item73, item74, item75, item76, item77, item78, item79) 
+
+# Niveau II
+
+negative_2.df <- data.frame(item8 	,item12 	,item30 	,item2 	,item15 	,item22 	,item39 	,item46 	,item52 	,item5 	,item68 	,item27 	,item36 	,item13 	,item59 	,item58 	,item75 	,item78 	,item33 	,item45 	,item51 	,item6 	,item34 	,item35 	,item44 	,item57 	,item48 	,item55 	,item26 	,item29 	,item16 	,item37 	,item63 	,item62 	,item10 	,item11 	,item25 	,item77 	,item70 	,item31 	,item60 	,item9 	,item24 	,item38 	,item43 	,item73 	,item18 	,item54 	,item53R 	,item3R 	,item1R)
+
+negative_2 <- (item8 + item12	+ item30 + item2 + item15 + item22 +item39 + item46	+ item52	+ item5 + item68 + item27 + item36 + item13 	+ item59	+ item58 + item75 	+item78 	+item33 	+item45 	+item51 	+item6 	+item34 	+item35 	+item44 	+item57 	+item48 	+item55 	+item26 	+item29 	+item16 	+item37 	+item63 	+item62 	+item10 	+item11 	+item25 	+item77 	+item70 	+item31 	+item60 	+item9 	+item24 	+item38 	+item43 	+item73 	+item18 	+item54 	+item53R 	+item3R 	+item1R)/51
+
+positive_2.df <- data.frame(item74 	,item42 	,item64 	,item65 	,item47 	,item21 	,item66 	,item69 	,item19 	,item76 	,item53 	,item40 	,item67 	,item71 	,item7 	,item4 	,item79 	,item23 	,item3 	,item28 	,item56 	,item49 	,item72 	,item31 	,item14 	,item29 	,item73 	,item26)
+
+positive_2 <- (item74 + item42 + item64 + item65 + item47 + item21 + item66 + item69 + item19 + item76 + item53 + item40 + item67 + item71 + item7 + item4 + item79	+ item23 +item3	+ item28	+ item56 + item49 + item72 + item31 + item14	+ item29	+ item73 + item26)/28
+
+# Niveau VIII
+
+## data.frames
+
+negatif_8.df <- data.frame(item30 	,item46 	,item34 	,item35 	,item12 	,item59 	,item51 	,item6 	,item36 	,item13 	,item26 	,item5 	,item68 	,item52 	,item58 	,item33 	,item77 	,item60 	,item10 	,item22 	,item45 	,item63 	,item31 	,item29 	,item38 	,item55 	,item78 	,item39 	,item44 	,item75 	,item15 	,item54 	,item57 	,item70)
+
+positif_8.df <- data.frame(item42 	,item65 	,item53 	,item64 	,item74 	,item47 	,item19 	,item40 	,item4 	,item23 	,item21 	,item3 	,item66 	,item7 	,item67 	,item76 	,item28 	,item71 	,item69 	,item1 	,item49 	,item31 	,item79) 
+
+colere_8.df <- data.frame(item27 	,item48 	,item15 	,item2 	,item39 	,item8 	,item55 	,item29 	,item44 	,item57 	,item37 	,item41 	,item43 	,item45 	,item12 	,item25 	,item32)
+
+pessimisme_.df <- data.frame(item16 	,item68 	,item22 	,item52 	,item25 	,item18 	,item31 	,item36 	,item8 	,item75 	,item9 	,item10 	,item1R 	,item3R)
+
+pertelimites_8.df <- data.frame(item73 	,item69 	,item79 	,item72 	,item66 	,item56 	,item67 	,item20)
+
+sexualise_8.df <- data.frame(item17 	,item61 	,item76 	,item71 	,item7 	,item56 	,item50 	,item32)
+
+evitement_8.df <- data.frame(item70 	,item78 	,item75 	,item60 	,item25) 
+
+mefiance_8.df <- data.frame(item11 	,item33 	,item55 	,item41) 
+
+## Scores
+
+negatif_8 <- (item30 	+item46 	+item34 	+item35 	+item12 	+item59 	+item51 	+item6 	+item36 	+item13 	+item26 	+item5 	+item68 	+item52 	+item58 	+item33 	+item77 	+item60 	+item10 	+item22 	+item45 	+item63 	+item31 	+item29 	+item38 	+item55 	+item78 	+item39 	+item44 	+item75 	+item15 	+item54 	+item57 	+item70) / 34 
+
+positif_8 <- (item42 	+ item65 	+ item53 	+ item64 	+ item74 	+ item47 	+ item19 	+ item40 	+ item4 	+ item23 	+ item21 	+ item3 	+ item66 	+ item7 	+ item67 	+ item76 	+ item28 	+ item71 	+ item69 	+ item1 	+ item49 	+ item31 	+ item79) / 23
+
+colere_8 <- (item27 	+ item48 	+ item15 	+ item2 	+ item39 	+ item8 	+ item55 	+ item29 	+ item44 	+ item57 	+ item37 	+ item41 	+ item43 	+ item45 	+ item12 	+ item25 	+ item32 )/17
+
+pessimisme_8 <- (item16 	+ item68 	+ item22 	+ item52 	+ item25 	+ item18 	+ item31 	+ item36 	+ item8 	+ item75 	+ item9 	+ item10 	+ item1R 	+ item3R) / 14
+
+pertelimites_8 <- (item73 	+ item69 	+ item79 	+ item72 	+ item66 	+ item56 	+ item67 	+ item20) / 8
+
+sexualise_8 <- (item17 	+ item61 	+ item76 	+ item71 	+ item7 	+ item56 	+ item50 	+ item32) / 8
+
+evitement_8 <- (item70 	+ item78 	+ item75 	+ item60 	+ item25) / 5
+
+mefiance_8 <- (item11 	+ item33 	+ item55 	+ item41) / 4
+```
+
+Nous proposons d’envisager le contre-transfert selon différents niveaux. En effet, il y a plusieurs moyens de qualifier le contre-transfert en fonction du degré de précision que l’on souhaite y donner. Ainsi avons-nous procédé à plusieurs analyses factorielles avec variation promax avec 1, 2, 3, etc. facteurs. Chaque facteur ajouté révèle un ressenti plus précis par rapport au niveau précédent. Une analyse à un seul facteur semble surtout renvoyer aux ressentis négatifs. Une analyse à deux facteurs fait émerger les ressentis positifs. <!-- ![](niv2.png) -->
+
+```{r echo=FALSE}
+mermaid("
+graph TD
+
+    A[APEX] -->|.99| B(Contre-transfert négatif)
+
+    A -->|ns| C(Contre-transfert positif)
+")
+```
+
+
+## Niveau II
+
+### Contre-transferts positifs en négatifs
+
+
+Le Tableau \@ref(tab:niv2-tab) reprend le calcul des deux facteurs renvoyant aux transferts négatifs et positifs.
+
+```{r include=FALSE}
+niv2db <- data.frame(
+  Transfert = c("Négatif", "Positif"),
+  Calcul = c("(item8 + item12	+ item30 + item2 + item15 + item22 +item39 + item46	+ item52	+ item5 + item68 + item27 + item36 + item13 	+ item59	+ item58 + item75 	+item78 	+item33 	+item45 	+item51 	+item6 	+item34 	+item35 	+item44 	+item57 	+item48 	+item55 	+item26 	+item29 	+item16 	+item37 	+item63 	+item62 	+item10 	+item11 	+item25 	+item77 	+item70 	+item31 	+item60 	+item9 	+item24 	+item38 	+item43 	+item73 	+item18 	+item54 	+item53R 	+item3R 	+item1R) / 51", "(item74 + item42 + item64 + item65 + item47 + item21 + item66 + item69 + item19 + item76 + item53 + item40 + item67 + item71 + item7 + item4 + item79	+ item23 +item3	+ item28	+ item56 + item49 + item72 + item31 + item14	+ item29	+ item73 + item26) / 28")
+)
+```
+
+```{r niv2-tab, tidy=FALSE, echo = FALSE}
+knitr::kable(
+  niv2db, caption = 'Transferts négatifs et positifs : calculs',
+  booktabs = TRUE
+)
+```
+
+
+```{r, echo = FALSE}
+ggplot(ct, aes(x=negative_2, y=positive_2))+geom_smooth()+ ylim(1, 5)+ xlim(1, 5)
+
+
+ggplot(ct, aes(x=age, fill=groupe2)) +
+  geom_smooth(aes(y = positive_2), color = "blue") + 
+  geom_smooth(aes(y = negative_2), color="red") + ylim(1, 5)+labs(x = "Age", y = "Ressentis", title = "Evolution des ressentis négatifs et positifs en fonction de l'âge des patients/détenus")
+
+ggplot(ct, aes(age, positive_2, colour = factor(groupe2))) +
+  geom_point()+geom_smooth()
+
+```
+
+Ce graphique représente le transfert positif (en bleu) ainsi que le transfert négatif (en rouge) ressenti par le clinicien pendant les entretiens. Il nous indique plusieurs tendances :
+
+1.  Pour les **patients** traités en ambulatoire, la qualité du transfert augmente entre l’adolescence et l’âge approximatif de 24 ans avant de diminuer progressivement, surtout après cinquante ans. Le transfert négatif (en rouge) est particulièrement rare pour les patients proches de 28 ans. Il augmente ensuite légèrement de manière régulière et continue ;
+2.  Pour les **détenus**, le transfert positif est plus rare que pour les patients ambulatoires alors que le transfert négatif est plus fréquent ;
+3.  Notons un phénomène particulier vers l’âge de 42 ans des détenus, âge auquel le transfert négatif est plus fréquent que le transfert positif. Il ne redescend qu’après l’âge de 55 ans tout en restant plus fréquent que le transfert positif.
+
+### Courbes d'informations des échelles de transfert positif
+
+```{r, echo = FALSE}
+positif.pcm <- 'positive_2 = 1-25'
+positifresults.pcm <- mirt(data=positive_2.df, model=positif.pcm, itemtype="gpcm", SE=TRUE, verbose=FALSE)
+coefpositif.gpcm <- coef(positifresults.pcm, IRTpars=TRUE, simplify=TRUE)
+itemspositifs.gpcm <- as.data.frame(coefpositif.gpcm$items)
+```
+
+```{r positifirt, tidy=FALSE}
+knitr::kable(
+  head(itemspositifs.gpcm, 25), caption = 'Paramètres de chaque item du transfert positif',
+  booktabs = TRUE
+)
+```
+
+```{r positifirtinfo-fig, fig.cap='Courbe information de transfert positif', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE}
+plot(positifresults.pcm, type = 'info', theta_lim = c(-4,4), lwd=2)
+```
+
+```{r positifirterreur-fig, fig.cap='Courbe erreurs de transfert positif', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE}
+plot(positifresults.pcm, type = 'SE', theta_lim = c(-4,4), lwd=2)
+```
+
+Les Figures \@ref(fig:positifirtinfo-fig) et \@ref(fig:positifirterreur-fig) permettent de se rendre compte que la variable de transfert positif offre une bonne évaluation des ressentis positifs entre les Théta -2 et +3, ce qui est assez satisfaisant. Par contre en-deçà et au-delà, elle semble moins fiable et précise.
+
+## Niveau VIII
+
+### Colère
+
+
+Colère (17 items) révèle par les items qu’il comporte que la relation thérapeutique n’est pas bonne. Le thérapeute croit peu les dires du patient. Il peut se sentir irrité et en colère envers ce dernier et un sentiment de devoir se contrôler peut survenir.
+
+@regent2018etude [p. 32] évoque les passages à l’acte contre-transférentiels avec les patients limites et narcissiques :
+
+> De façon générale, la littérature clinique rapporte que le contre-transfert des thérapeutes qui travaillent avec ces patients est négatif en raison de la charge d'agressivité que ces patients projettent sur la personne du thérapeute. Face à cette agressivité, les réactions contre-transférentielles des thérapeutes peuvent alors être teintées d'agressivité, tournées vers les patients ou les thérapeutes eux-mêmes, ce qui est nuisible au processus thérapeutique
+
+> In this way the intensity of the 'negative countertransference' (the anger with the patient) usually increases because of the failure of the countertransference defense (the therapeutic action) and the analyst's subsequent increase of anxiety over a catastrophe in the countertransference experience (the destruction of the object). [@racker1957meanings p. 324]
+
+> The countertransference reactions of aggression (or of its equivalent) occur in response to transference situations in which the patient frustrates certain desires of the analyst. [@racker1957meanings p. 349]
+
+Le Tableau \@ref(tab:colere-tab) reprend le calcul du facteur renvoyant aux ressentis d'incompétence et d'impuissance.
+
+```{r include=FALSE}
+colere_8calcul.df <- data.frame(
+  Transfert = c("Colère"),
+  Calcul = c("(item27 	+ item48 	+ item15 	+ item2 	+ item39 	+ item8 	+ item55 	+ item29 	+ item44 	+ item57 	+ item37 	+ item41 	+ item43 	+ item45 	+ item12 	+ item25 	+ item32 ) / 17")
+)
+```
+
+```{r colere-tab, tidy=FALSE, echo = FALSE}
+knitr::kable(
+  colere_8calcul.df, caption = 'Colère : calcul',
+  booktabs = TRUE
+)
+```
+
+```{r colere-fig, fig.cap='Col', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE}
+
+ggplot(ct, aes(x=colere_8)) + geom_freqpoly(size=2, bins=5)+xlim(1, 5)+labs(x = "Ressenti de colère", y = "Fréquence", title = "Ressenti de colère pour l'échantillon total")
+```
+
+Figure \@ref(fig:colere-fig) représente les fréquences de ressentis de colère sur l'échantillon total.
+
+#### Effet de l'âge des patients sur le ressenti de colère
+
+```{r agecolere-fig, fig.cap='Colère', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE}
+
+ggplot(data = ct, aes(x = age, y = colere_8))+geom_smooth(size=2)+ylim(1, 5)
+
+```
+
+La Figure \@ref(fig:agecolere-fig) représente l'évolution du vécu d'impuissance du clinicien en fonction de l'âge du patient. Il semble que ce vécu tende à augmenter à partir de l'âge de quarante ans.
+
+#### Effet du genre des patients sur le ressenti de colère
+
+```{r genrecolere-fig, fig.cap='Colère', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE}
+
+ggplot(data = ct, aes(x = genre2, y = colere_8))+geom_boxplot()+ylim(1, 5)+labs(x = "Sexe", title = "Ressenti de colère selon le sexe du patient")
+```
+
+La Figure \@ref(fig:genrecolere-fig) représente les différences éventuelles de vécu d'impuissance des cliniciens en fonction du genre du patient.
+
+```{r}
+t.test(colere_8~genre2)
+```
+
+### Effet du groupe de patients sur le ressenti de colère
+
+```{r groupecolere-fig, fig.cap='Colère', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE}
+
+ggplot(data = ct, aes(x = groupe2, y = colere_8))+geom_boxplot()+ylim(1, 5)+
+  labs(x = "Groupe",
+       title = "Ressenti de colère selon le groupe")
+```
+
+La Figure \@ref(fig:groupecolere-fig) représente les différences éventuelles de vécu d'impuissance des cliniciens en fonction du groupe du patient.
+
+```{r}
+t.test(colere_8~groupe2)
+```
+
+#### Courbe d'information de l'échelle de colère
+
+```{r}
+colere.pcm <- 'colere_8.df = 1-17'
+colereresults.pcm <- mirt(data=colere_8.df, model=colere.pcm, itemtype="Rasch", SE=TRUE, verbose=FALSE)
+plot(colereresults.pcm, type = 'info', theta_lim = c(-4,4), lwd=2) 
+```
+
+> This withdrawal has diverse origins and natures; but it has specific characteristics, for not every kind of withdrawal by the patient produces boredom in the analyst. One of these characteristics seems to be that the patient withdraws without going away, he takes his emotional departure from the analyst while yet remaining with him; there is as a rule no danger of the patient's taking flight. This partial withdrawal or abandonment expresses itself superficially in intellectualization (emotional blocking), in increased control, sometimes in monotony in the way of speaking, or in similar devices. The analyst has at these times the sensation of being excluded and of being impotent to guide the course of the sessions. It seems that the analysand tries in this way to avoid a latent and dreaded dependence upon the analyst. [@racker1957meanings p. 352-353]
+
+
+
+## Effet de l'âge sur les types de contre-transfert
+
+```{r}
+ggplot(ct, aes(x=age)) +
+  geom_smooth(aes(y = positive_2), color = "green") + 
+  geom_smooth(aes(y = colere_8), color="steelblue") +
+  geom_smooth(aes(y = negative_2), color="red") 
+```
+
+## Fiabilité inter-juges
+
+```{r include=FALSE}
+
+#Calcul des scores pour les psychiatres
+
+negatif_8psychiatre <- (itempsychiatre30 	+itempsychiatre46 	+itempsychiatre34 	+itempsychiatre35 	+itempsychiatre12 	+itempsychiatre59 	+itempsychiatre51 	+itempsychiatre6 	+itempsychiatre36 	+itempsychiatre13 	+itempsychiatre26 	+itempsychiatre5 	+itempsychiatre68 	+itempsychiatre52 	+itempsychiatre58 	+itempsychiatre33 	+itempsychiatre77 	+itempsychiatre60 	+itempsychiatre10 	+itempsychiatre22 	+itempsychiatre45 	+itempsychiatre63 	+itempsychiatre31 	+itempsychiatre29 	+itempsychiatre38 	+itempsychiatre55 	+itempsychiatre78 	+itempsychiatre39 	+itempsychiatre44 	+itempsychiatre75 	+itempsychiatre15 	+itempsychiatre54 	+itempsychiatre57 	+itempsychiatre70) / 34 
+
+positif_8psychiatre <- (itempsychiatre42 	+ itempsychiatre65 	+ itempsychiatre53 	+ itempsychiatre64 	+ itempsychiatre74 	+ itempsychiatre47 	+ itempsychiatre19 	+ itempsychiatre40 	+ itempsychiatre4 	+ itempsychiatre23 	+ itempsychiatre21 	+ itempsychiatre3 	+ itempsychiatre66 	+ itempsychiatre7 	+ itempsychiatre67 	+ itempsychiatre76 	+ itempsychiatre28 	+ itempsychiatre71 	+ itempsychiatre69 	+ itempsychiatre1 	+ itempsychiatre49 	+ itempsychiatre31 	+ itempsychiatre79) / 23
+
+colere_8psychiatre <- (itempsychiatre27 	+ itempsychiatre48 	+ itempsychiatre15 	+ itempsychiatre2 	+ itempsychiatre39 	+ itempsychiatre8 	+ itempsychiatre55 	+ itempsychiatre29 	+ itempsychiatre44 	+ itempsychiatre57 	+ itempsychiatre37 	+ itempsychiatre41 	+ itempsychiatre43 	+ itempsychiatre45 	+ itempsychiatre12 	+ itempsychiatre25 	+ itempsychiatre32 )/17
+
+pessimisme_8psychiatre <- (itempsychiatre16 	+ itempsychiatre68 	+ itempsychiatre22 	+ itempsychiatre52 	+ itempsychiatre25 	+ itempsychiatre18 	+ itempsychiatre31 	+ itempsychiatre36 	+ itempsychiatre8 	+ itempsychiatre75 	+ itempsychiatre9 	+ itempsychiatre10 	+ itempsychiatre1R 	+ itempsychiatre3R) / 14
+
+pertelimites_8psychiatre <- (itempsychiatre73 	+ itempsychiatre69 	+ itempsychiatre79 	+ itempsychiatre72 	+ itempsychiatre66 	+ itempsychiatre56 	+ itempsychiatre67 	+ itempsychiatre20) / 8
+
+sexualise_8psychiatre <- (itempsychiatre17 	+ itempsychiatre61 	+ itempsychiatre76 	+ itempsychiatre71 	+ itempsychiatre7 	+ itempsychiatre56 	+ itempsychiatre50 	+ itempsychiatre32) / 8
+
+evitement_8psychiatre <- (itempsychiatre70 	+ itempsychiatre78 	+ itempsychiatre75 	+ itempsychiatre60 	+ itempsychiatre25) / 5
+
+mefiance_8psychiatre <- (itempsychiatre11 	+ itempsychiatre33 	+ itempsychiatre55 	+ itempsychiatre41) / 4
+
+
+npsychiatre <- sum(complete.cases(positif_8psychiatre))
+
+corpositif <- cor.test(positif_8, positif_8psychiatre, method = "spearman", use = "pairwise")
+cornegatif <- cor.test(negatif_8, negatif_8psychiatre, method = "spearman", use = "pairwise")
+corcolere <- cor.test(colere_8, colere_8psychiatre, method = "spearman", use = "pairwise")
+corpessimisme <- cor.test(pessimisme_8, pessimisme_8psychiatre, method = "spearman", use = "pairwise")
+corpertelimites <- cor.test(pertelimites_8, pertelimites_8psychiatre, method = "spearman", use = "pairwise")
+corsexualise <- cor.test(sexualise_8, sexualise_8psychiatre, method = "spearman", use = "pairwise")
+corevitement <- cor.test(evitement_8, evitement_8psychiatre, method = "spearman", use = "pairwise")
+cormefiance <- cor.test(mefiance_8, mefiance_8psychiatre, method = "spearman", use = "pairwise")
+
+reliability.df <- data.frame(
+   Contretransfert = c ("Positif","Négatif","Colère","Pessimisme","Perte des limites", "Sexualisé"), 
+   Psychologues = c(round(mean(positif_8), digit=2),round(mean(negatif_8),                                  digit=2),round(mean(colere_8),digit=2),round(mean(pessimisme_8),digit=2),round(mean(pertelimites_8),digit=2),round(mean(sexualise_8), digit=2)),
+   Psychiatres = c(round(mean(positif_8psychiatre, na.rm = TRUE), digit =2),round(mean(negatif_8psychiatre, na.rm = TRUE),digit=2),round(mean(colere_8psychiatre, na.rm = TRUE),digit=2),round(mean(pessimisme_8psychiatre, na.rm = TRUE),digit=2),round(mean(pertelimites_8psychiatre, na.rm = TRUE),digit=2),round(mean(sexualise_8psychiatre, na.rm = TRUE),digit=2)),
+   r = c(printnum(corpositif$estimate),printnum(cornegatif$estimate),printnum(corcolere$estimate),printnum(corpessimisme$estimate),printnum(corpertelimites$estimate),printnum(corsexualise$estimate)),
+   p = c(printnum(corpositif$p.value),printnum(cornegatif$p.value),printnum(corcolere$p.value),printnum(corpessimisme$p.value),printnum(corpertelimites$p.value),printnum(corsexualise$p.value)),
+   stringsAsFactors = FALSE
+)
+
+```
+
+La cotation du TRQ pour un(e) même patient(e) par deux professionnels différents mène-t-elle à des résultats similaires ? Il est raisonnable de penser qu'elle ne sera pas complètement identique dès lors que chaque dyade professionnel-patient est différente. Mais sera-telle complètement différente ? Pour tenter de répondre à cette question, nous avons demandé à des psychiatres de coter le TRQ pour les patients que les psychologues avaient rencontrés. Notons que les psychiatres n'ont pas rencontrés tous les patients évalués par les psychologues. En effet, le nombre de patients cotés par les psychiatres est égal à `r npsychiatre`. Nous avons dès lors un effectif plus réduit pour cette partie de l'étude.
+
+```{r reliability-tab, tidy=FALSE, echo = FALSE}
+knitr::kable(
+  reliability.df, caption = 'Fiabilité inter-correcteurs',
+  booktabs = TRUE
+)
+```
+
+Le Tableau \@ref(tab:reliability-tab) reprend les moyennes obtenues pour chaque type de contre-transfert cotés par les psychologue d'une part et les psychiatres d'autre part. Il indique également la corrélation (Rho de spearman) entre les deux scores et le degré de significativité.

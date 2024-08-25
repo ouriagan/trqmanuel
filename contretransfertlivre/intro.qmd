@@ -1,3 +1,7 @@
+---
+lang: fr    
+---
+
 # Introduction
 
 Depuis la naissance de la psychothérapie à la fin du 19ème siècle, la prise en charge psychologique des patients a connu une expansion et une diversification significative. L’apparition de nouvelles pathologies et l’évolution des mentalités a induit un réaménagement de l’offre de soins et des techniques proposées. Ce début de 21ème siècle a connu une influence du modèle managérial qui tente d’équilibrer les besoins et les ressources et conçoit la société comme un système au sein duquel les individus et les produits circulent suivant des canaux idéalement prédéfinis. La santé mentale n’échappe actuellement pas à cette grille de lecture. Par exemple, la “schizophrénie” est un problème social qui doit être géré par des infrastructures et des professionnels qui adoptent une technique de soin définie. Ainsi pourrait-on construire un hôpital psychiatrique répondant aux normes architecturales, engager des psychiatres qui sont porteurs d’un diplôme officiel et les encourager à proposer des soins cohérents avec la littérature scientifique la plus actuelle. Un tel modèle a notamment pour intérêt d’objectiver des coûts et des bénéfices au modèle de soins.\

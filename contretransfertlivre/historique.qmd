@@ -1,3 +1,7 @@
+---
+lang: fr    
+---
+
 # Historique et définition du contre-transfert {#historique}
 
 Dans ce chapitre, nous allons tenter de comprendre dans quel contexte la notion de contre-transfert est née et suivre son évolution au fil des décennies et des recherches qui furent menées à son sujet. Nous proposerons donc plusieurs définitions pour parvenir à celle que nous proposons.
@@ -52,8 +56,8 @@ Dans la continuité des travaux de Ferenczi, Winnicott a mis en avant que le th�
 
 Dans son article, @winnicott1949hate compare le thérapeute à une mère qui a plusieurs raisons de haïr son enfant mais qui l'aime malgré tout.
 
-Pour @goyena2006heinrich, Winnicott a mis en évidence une conception novatrice du concept qu’est le contre-transfert. En effet, cette conception met l’accent sur les ressentis de haine que le thérapeute était susceptible d’éprouver.\
-Le thérapeute doit maintenir une position objective. Toutefois, Winnicott aurait affirmé que le fait d’avouer sa haine contre-transférentielle pouvait être bénéfique et non nuisible, que cela soit pour le patient et/ou pour le progrès de la thérapie [@cabre2012contribution].\
+Pour @goyena2006heinrich, Winnicott a mis en évidence une conception novatrice du concept qu’est le contre-transfert. En effet, cette conception met l’accent sur les ressentis de haine que le thérapeute était susceptible d’éprouver.
+Le thérapeute doit maintenir une position objective. Toutefois, Winnicott aurait affirmé que le fait d’avouer sa haine contre-transférentielle pouvait être bénéfique et non nuisible, que cela soit pour le patient et/ou pour le progrès de la thérapie [@cabre2012contribution].
 Finalement, nous pouvons dire que Winnicott opte pour une conception plus large du contre-transfert comprenant les conflits non résolus de l’analyste ainsi que ses expériences et ses réactions émotionnelles.
 
 ## Margaret Little : le contre-transfert provient du thérapeute et du patient

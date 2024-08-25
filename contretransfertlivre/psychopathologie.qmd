@@ -1,3 +1,7 @@
+---
+lang: fr    
+---
+
 # Approche psychopathologique {#psychopathologie}
 
 ```{r, echo = FALSE, include=FALSE}

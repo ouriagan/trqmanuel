@@ -1,3 +1,7 @@
+---
+lang: fr    
+---
+
 # Le Questionnaire de Réponse Emotionnelle {#trq}
 
 Le TRQ est un questionnaire de 79 items mesurant un large éventail de *pensées*, de *sentiments* et de *comportements* exprimés par les thérapeutes envers leurs patients. Les items ont été dérivés de la littérature clinique, théorique et empirique sur le contre-transfert par @betan2005countertransference. Les items sont rédigés de manière simple et sans jargon pour que les thérapeutes de diverses orientations puissent utiliser l’outil de façon comparable. 
@@ -10,7 +14,7 @@ Mais que mesurent réellement ces 79 items ?
 
 ## Fondements et études portant sur le TRQ 
  
-Dans sa version initiale, le TRQ était appelé le Countertransference Questionnaire. Cet outil a permis de mettre en commun l’expérience de dizaines de cliniciens et d’identifier des modèles communs de réactions de CT dans la pratique clinique. @betan2005countertransference ont demandé à 181 cliniciens de répondre aux questionnaires afin de pouvoir mesurer leurs réponses affectives, cognitives et comportementales à un(e) patient(e) non psychotique dont ils ont la charge. Afin de pouvoir étudier la structure factorielle du CT, les auteurs ont effectué une analyse en composantes principales et identifié le nombre de facteurs à soumettre à la rotation promax. L’analyse factorielle se révélant la plus judicieuse pour maximiser l’interprétabilité était celle comportant huit facteurs. Ces huit dimensions du contre-transfert présentées dans le Tableau \@ref(tab:betan-tab) étaient cohérentes sur le plan clinique et conceptuel.
+Dans sa version initiale, le TRQ était appelé le Countertransference Questionnaire. Cet outil a permis de mettre en commun l’expérience de dizaines de cliniciens et d’identifier des modèles communs de réactions de CT dans la pratique clinique. @betan2005countertransference ont demandé à 181 cliniciens de répondre aux questionnaires afin de pouvoir mesurer leurs réponses affectives, cognitives et comportementales à un(e) patient(e) non psychotique dont ils ont la charge. Afin de pouvoir étudier la structure factorielle du CT, les auteurs ont effectué une analyse en composantes principales et identifié le nombre de facteurs à soumettre à la rotation promax. L’analyse factorielle se révélant la plus judicieuse pour maximiser l’interprétabilité était celle comportant huit facteurs. Ces huit dimensions du contre-transfert présentées dans le  @tbl-betan étaient cohérentes sur le plan clinique et conceptuel.
 
 
 ```{r include=FALSE}
@@ -20,9 +24,12 @@ betandb <- data.frame(
 )
 ```
 
-```{r betan-tab, tidy=FALSE, echo = FALSE}
+```{r betantab, tidy=FALSE, echo = FALSE}
+#| label: tbl-betan
+#| tbl-cap: "Représentation des dimensions factorielles de la version américaine du TRQ"
+
 knitr::kable(
-  betandb, caption = 'Représentation des dimensions factorielles de la version américaine du TRQ',
+  betandb, 
   booktabs = TRUE
 )
 ```
@@ -44,3 +51,89 @@ En ce qui concerne la perte du facteur positif, les auteurs l’attribuent aux d
 Les auteurs ont pu mettre en lumière que les thérapeutes travaillant en institution semblaient éprouver davantage de détresse et d’épuisement professionnel.  
 Les chercheurs ont également identifié que certains groupes de thérapeutes présentaient des niveaux plus élevés de contre-transfert auto-rapporté. Les thérapeutes masculins, à orientation psychodynamique, les jeunes ou moins expérimentés ainsi que les thérapeutes travaillant ailleurs que dans le secteur privé, ont tous signalé plus de contre-transfert que les femmes, les thérapeutes cognitivo-comportementalistes les plus âgés ou plus expérimentés et travaillant dans le secteur privé.  
 @berg2019countertransference, indiquent que la charge de travail du thérapeute n’a eu aucun effet significatif sur le CT pas plus que l’âge ou le sexe du patient, ni l’éducation du thérapeute. Les recherches semblent également indiquer que les caractéristiques du thérapeute contribuent au contre-transfert et non celles du patient.   
+
+# Questionnaire en version française
+
+| Question | Affirmation                                                                                                                                             |
+|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1        | J'ai bon espoir qu'il / elle bénéficie ou bénéficeria du traitement.                                                                                    |
+| 2        |  A certains moments, je ne l'apprécie pas.                                                                                                              |
+| 3        | Je trouve cela stimulant de travailler avec lui / elle.                                                                                                 |
+| 4        |  Je ressens de la compassion pour lui / elle.                                                                                                           |
+| 5        | Je regrette de l'avoir pris(e) comme patient(e).                                                                                                        |
+| 6        | Je me sens rejeté(e) ou dévalorisé(e).                                                                                                                  |
+| 7        | S'il / elle n'était pas mon / ma patient(e), je pourrais imaginer être ami(e) avec lui / elle.                                                          |
+| 8        | Je me sens agacé(e) lors des séances avec lui / elle.                                                                                                   |
+| 9        | Je ne me sens pas pleinement investi(e) lors des séances avec lui / elle.                                                                               |
+| 10       | Je me sens confus lors des séances avec lui / elle.                                                                                                     |
+| 11       | Je ne crois pas ce qu'il / elle me raconte.                                                                                                             |
+| 12       | Je me sens critiqué(e) par lui / elle.                                                                                                                  |
+| 13       | J'appréhende les séances avec lui / elle.                                                                                                               |
+| 14       | Je ressens de la colère envers son entourage.                                                                                                           |
+| 15       | Je ressens de la colère à son égard.                                                                                                                    |
+| 16       | Je ressens de l'ennui pendant les séances avec lui / elle.                                                                                              |
+| 17       | Je ressens une attirance sexuelle envers lui / elle.                                                                                                    |
+| 18       | Je me sens déprimé(e) lors des séances avec lui / elle.                                                                                                 |
+| 19       | J'ai hâte d'être en séance avec lui / elle.                                                                                                             |
+| 20       | Je me sens envieux(-se), ou en compétition avec lui / elle.                                                                                             |
+| 21       | Je souhaiterais lui donner ce que d'autres n'ont jamais pu lui donner.                                                                                  |
+| 22       | Je me sens frustré(e) lors des séances avec lui / elle.                                                                                                 |
+| 23       | Il / elle me fait me sentir bien.                                                                                                                       |
+| 24       | Je me sens coupable des sentiments que j'ai à son égard.                                                                                                |
+| 25       | Mon esprit s'évade souvent vers d'autres chose que ce qu'il / elle est en train de me dire.                                                             |
+| 26       | Je me sens submergé(e) par ses émotions fortes.                                                                                                         |
+| 27       | Il / elle me rend furieux(se).                                                                                                                          |
+| 28       | Je me sens coupable quand il / elle est en détresse ou se dégrade, comme si j'y étais pour quelque chose.                                               |
+| 29       | Il / elle a tendance à susciter de fortes émotions en moi.                                                                                              |
+| 30       | Je me sens anxieux(-se) quand je travaille avec lui / elle.                                                                                             |
+| 31       | Je sens que je ne parviens pas à l'aider ou je m'inquiète de ne pas être capable de l'aider.                                                            |
+| 32       | Ses sentiments sexuels à mon égard me rendent anxieux(se) ou me mettent mal à l'aise.                                                                   |
+| 33       | Je me sens utilisé(e) ou manipulé(e) par lui / elle.                                                                                                    |
+| 34       | J'ai le sentiment que je marche sur des oeufs avec lui / elle, je crains qu'il / elle n'explose, s'effondre, ou parte si je commets une maladresse.     |
+| 35       | Il / elle me fait peur.                                                                                                                                 |
+| 36       | Je me sens incompétent(e) ou inadéquat(e) en travaillant avec lui / elle.                                                                               |
+| 37       | Je me découvre contrôlant avec lui / elle.                                                                                                              |
+| 38       | Je me sens remplaçable - comme si j'étais n'importe qui pour lui / elle.                                                                                |
+| 39       | Je dois me retenir de dire ou de faire des choses agressives ou critiques.                                                                              |
+| 40       | J'ai le sentiment de le / la comprendre.                                                                                                                |
+| 41       | Je lui dis quand je suis fâché(e) sur lui / elle.                                                                                                       |
+| 42       | J'ai le sentiment de vouloir le / la protéger.                                                                                                          |
+| 43       | Je regrette certaines choses que je lui ai dites.                                                                                                       |
+| 44       | J'ai le sentiment d'être méchant(e) ou cruel(le) envers lui / elle.                                                                                     |
+| 45       | J'ai des difficultés avec les sentiments qu'il / elle exprime.                                                                                          |
+| 46       | Je me sens maltraité(e) ou abusé(e) par lui / elle.                                                                                                     |
+| 47       | Je me sens maternant(e) à son égard.                                                                                                                    |
+| 48       | Je perds mon sang froid avec lui / elle.                                                                                                                |
+| 49       | Je me sens triste lors des séances avec lui / elle.                                                                                                     |
+| 50       | Je lui dis que je l'aime.                                                                                                                               |
+| 51       | Je me sens submergé(e) par ses besoins.                                                                                                                 |
+| 52       | Je me sens désespéré(e) en travaillant avec lui / elle.                                                                                                 |
+| 53       | Je me sens heureux(se) et satisfait(e) après les séances avec lui / elle.                                                                               |
+| 54       | Je pense qu'il / elle bénéficierait plus d'un autre thérapeute ou d'une autre forme de thérapie.                                                        |
+| 55       | Je me sens contraint(e) de poser des limites fermes avec lui / elle.                                                                                    |
+| 56       | Je me surprends à être charmeur(se) à son égard.                                                                                                        |
+| 57       | J'éprouve du ressentiment en travaillant avec lui / elle.                                                                                               |
+| 58       | Je pense ou m'imagine mettre un terme au traitement.                                                                                                    |
+| 59       | Je me sens pieds et poings liés ou comme si j'étais pris dans un lien impossible.                                                                       |
+| 60       | Lorsque je vérifie mes messages téléphoniques, je suis anxieux(se) ou je redoute qu'il y en ait un de lui / elle.                                       |
+| 61       | Je ressens une tension sexuelle dans la pièce.                                                                                                          |
+| 62       | Je me sens dégouté par lui / elle.                                                                                                                      |
+| 63       | Je ne me sens pas apprécié(e) par lui / elle.                                                                                                           |
+| 64       | J'ai un sentiment chaleureux, presque parental, envers lui / elle.                                                                                      |
+| 65       | Je l'apprécie beaucoup.                                                                                                                                 |
+| 66       | Je m'inquiète davantage après les séances pour lui / elle que pour mes autres patients.                                                                 |
+| 67       | Je termine les séances plus tard avec lui / elle, qu'avec mes autres patients.                                                                          |
+| 68       | Je me sens moins compétent(e) à l'aider qu'à aider d'autres patients.                                                                                   |
+| 69       | Je fais des choses pour lui / elle que je ne fais pas pour d'autres patients, ou je vais plus loin avec lui / elle qu'avec mes autres patients.         |
+| 70       | Je donne suite à ses appels téléphoniques moins rapidement qu'à ceux de mes autres patients.                                                            |
+| 71       | Je dévoile mes sentiments plus souvent avec lui / elle qu'avec d'autres patients.                                                                       |
+| 72       | Je l'appelle davantage entre les séances que d'autres de mes patients.                                                                                  |
+| 73       | Je discute de lui / d'elle avec mes collègues ou superviseurs plus que de mes autres patients.                                                          |
+| 74       | Il / elle est un(e) de mes patient(e)s favori(te)s.                                                                                                     |
+| 75       | Je regarde davantage ma montre avec lui / elle qu'avec mes autres patients.                                                                             |
+| 76       | Je dévoile davantage ma vie personnelle avec lui / elle qu'avec mes autres patients.                                                                    |
+| 77       | Plus souvent qu'avec la plupart des patients, je me suis senti embarqué(e) dans certaines choses dont je ne me suis rendu(e) compte qu'après la séance. |
+| 78       | J'ai tendance à commencer les séances avec lui / elle plus tard qu'avec d'autres patients.                                                              |
+| 79       | Je parle plus souvent de lui / d'elle à mon époux / se ou d'autres personnes importantes que de mes autres patients.                                    |
+
+: TRQ version française {#tbl-trq}

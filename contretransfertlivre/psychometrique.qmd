@@ -2,6 +2,7 @@
 output:
   html_document: default
   pdf_document: default
+lang: fr
 ---
 
 # Approche psychométrique {#psychometrique}
@@ -192,13 +193,19 @@ ctitems <- data.frame(item1, item2, item3, item4, item5, item6, item7, item8, it
 
 # Niveau II
 
-negative_2.df <- data.frame(item8 	,item12 	,item30 	,item2 	,item15 	,item22 	,item39 	,item46 	,item52 	,item5 	,item68 	,item27 	,item36 	,item13 	,item59 	,item58 	,item75 	,item78 	,item33 	,item45 	,item51 	,item6 	,item34 	,item35 	,item44 	,item57 	,item48 	,item55 	,item26 	,item29 	,item16 	,item37 	,item63 	,item62 	,item10 	,item11 	,item25 	,item77 	,item70 	,item31 	,item60 	,item9 	,item24 	,item38 	,item43 	,item73 	,item18 	,item54 	,item53R 	,item3R 	,item1R)
+## data.frames
 
-negative_2 <- (item8 + item12	+ item30 + item2 + item15 + item22 +item39 + item46	+ item52	+ item5 + item68 + item27 + item36 + item13 	+ item59	+ item58 + item75 	+item78 	+item33 	+item45 	+item51 	+item6 	+item34 	+item35 	+item44 	+item57 	+item48 	+item55 	+item26 	+item29 	+item16 	+item37 	+item63 	+item62 	+item10 	+item11 	+item25 	+item77 	+item70 	+item31 	+item60 	+item9 	+item24 	+item38 	+item43 	+item73 	+item18 	+item54 	+item53R 	+item3R 	+item1R)/51
+negative_2.df <- data.frame(item8 	,item12 	,item30 	,item2 	,item15 	,item22 	,item39 	,item46 	,item52 	,item5 	,item68 	,item27 	,item36 	,item13 	,item59 	,item58 	,item75 	,item78 	,item33 	,item45 	,item51 	,item6 	,item34 	,item35 	,item44 	,item57 	,item48 	,item55 	,item26 	,item29 	,item16 	,item37 	,item63 	,item62 	,item10 	,item11 	,item25 	,item77 	,item70 	,item31 	,item60 	,item9 	,item24 	,item38 	,item43 	,item73 	,item18 	,item54 	,item53R 	,item3R 	,item1R)
 
 positive_2.df <- data.frame(item74 	,item42 	,item64 	,item65 	,item47 	,item21 	,item66 	,item69 	,item19 	,item76 	,item53 	,item40 	,item67 	,item71 	,item7 	,item4 	,item79 	,item23 	,item3 	,item28 	,item56 	,item49 	,item72 	,item31 	,item14 	,item29 	,item73 	,item26)
 
+## Calcul
+
+negative_2 <- (item8 + item12	+ item30 + item2 + item15 + item22 +item39 + item46	+ item52	+ item5 + item68 + item27 + item36 + item13 	+ item59	+ item58 + item75 	+item78 	+item33 	+item45 	+item51 	+item6 	+item34 	+item35 	+item44 	+item57 	+item48 	+item55 	+item26 	+item29 	+item16 	+item37 	+item63 	+item62 	+item10 	+item11 	+item25 	+item77 	+item70 	+item31 	+item60 	+item9 	+item24 	+item38 	+item43 	+item73 	+item18 	+item54 	+item53R 	+item3R 	+item1R)/51
+
 positive_2 <- (item74 + item42 + item64 + item65 + item47 + item21 + item66 + item69 + item19 + item76 + item53 + item40 + item67 + item71 + item7 + item4 + item79	+ item23 +item3	+ item28	+ item56 + item49 + item72 + item31 + item14	+ item29	+ item73 + item26)/28
+
+stylesct_2.df <- data.frame(negative_2,positive_2)
 
 # Niveau VIII
 
@@ -210,7 +217,7 @@ positif_8.df <- data.frame(item42 	,item65 	,item53 	,item64 	,item74 	,item47 	
 
 colere_8.df <- data.frame(item27 	,item48 	,item15 	,item2 	,item39 	,item8 	,item55 	,item29 	,item44 	,item57 	,item37 	,item41 	,item43 	,item45 	,item12 	,item25 	,item32)
 
-pessimisme_.df <- data.frame(item16 	,item68 	,item22 	,item52 	,item25 	,item18 	,item31 	,item36 	,item8 	,item75 	,item9 	,item10 	,item1R 	,item3R)
+pessimisme_8.df <- data.frame(item16 	,item68 	,item22 	,item52 	,item25 	,item18 	,item31 	,item36 	,item8 	,item75 	,item9 	,item10 	,item1R 	,item3R)
 
 pertelimites_8.df <- data.frame(item73 	,item69 	,item79 	,item72 	,item66 	,item56 	,item67 	,item20)
 
@@ -237,11 +244,16 @@ sexualise_8 <- (item17 	+ item61 	+ item76 	+ item71 	+ item7 	+ item56 	+ item5
 evitement_8 <- (item70 	+ item78 	+ item75 	+ item60 	+ item25) / 5
 
 mefiance_8 <- (item11 	+ item33 	+ item55 	+ item41) / 4
+
+stylesct_8.df <- data.frame(negatif_8, positif_8, colere_8, pessimisme_8, pertelimites_8, sexualise_8, evitement_8, mefiance_8)
+
+# stylesct_8bis.df <- data.frame("Négatif" = negatif_8, "Positif"=positif_8, "Colère"=colere_8, "Pessimisme" = pessimisme_8, "Perte des limites" = pertelimites_8, "Sexualisé"= sexualise_8, "Evitement"=evitement_8, "Méfiance" = mefiance_8)
+
 ```
 
 Nous proposons d’envisager le contre-transfert selon différents niveaux. En effet, il y a plusieurs moyens de qualifier le contre-transfert en fonction du degré de précision que l’on souhaite y donner. Ainsi avons-nous procédé à plusieurs analyses factorielles avec variation promax avec 1, 2, 3, etc. facteurs. Chaque facteur ajouté révèle un ressenti plus précis par rapport au niveau précédent. Une analyse à un seul facteur semble surtout renvoyer aux ressentis négatifs. Une analyse à deux facteurs fait émerger les ressentis positifs. <!-- ![](niv2.png) -->
 
-```{r echo=FALSE}
+```{r, echo=FALSE}
 mermaid("
 graph TD
 
@@ -257,18 +269,65 @@ graph TD
 ### Contre-transferts positifs en négatifs
 
 
-Le Tableau \@ref(tab:niv2-tab) reprend le calcul des deux facteurs renvoyant aux transferts négatifs et positifs.
+Le @tbl-styles2ct reprend le calcul des deux facteurs renvoyant aux transferts négatifs et positifs.
 
-```{r include=FALSE}
+```{r, echo = FALSE}
 niv2db <- data.frame(
   Transfert = c("Négatif", "Positif"),
   Calcul = c("(item8 + item12	+ item30 + item2 + item15 + item22 +item39 + item46	+ item52	+ item5 + item68 + item27 + item36 + item13 	+ item59	+ item58 + item75 	+item78 	+item33 	+item45 	+item51 	+item6 	+item34 	+item35 	+item44 	+item57 	+item48 	+item55 	+item26 	+item29 	+item16 	+item37 	+item63 	+item62 	+item10 	+item11 	+item25 	+item77 	+item70 	+item31 	+item60 	+item9 	+item24 	+item38 	+item43 	+item73 	+item18 	+item54 	+item53R 	+item3R 	+item1R) / 51", "(item74 + item42 + item64 + item65 + item47 + item21 + item66 + item69 + item19 + item76 + item53 + item40 + item67 + item71 + item7 + item4 + item79	+ item23 +item3	+ item28	+ item56 + item49 + item72 + item31 + item14	+ item29	+ item73 + item26) / 28")
 )
 ```
 
+La @fig-negative2hist représente la distribution de la variable negative_2.
+
+```{r, echo = FALSE}
+#| label: fig-negative2hist
+#| fig-cap: "Distribution de negative_2"
+
+
+# Calculer le nombre total d'observations (N)
+N <- sum(!is.na(stylesct_2.df$negative_2))
+
+# Créer l'histogramme 
+ggplot(stylesct_2.df, aes(x = negative_2)) +
+  geom_histogram(binwidth = 1, fill = "skyblue", color = "black", alpha = 0.7) +
+  labs(title = "Distribution de negative_2",
+       x = "Valeurs de negative_2",
+       y = "Fréquence") +
+  scale_x_continuous(limits = c(0, 6), breaks = seq(1, 5, by = 1)) +  # Limite de l'axe X de 1 à 6
+  annotate("text", x = 4.5, y = max(table(stylesct_2.df$negative_2)), 
+           label = paste("N =", N), hjust = 1, vjust = 1, size = 5, color = "black") +
+  theme_minimal()
+```
+
+La @fig-positive2hist représente la distribution de la variable positive_2.
+
+```{r, echo = FALSE}
+#| label: fig-positive2hist
+#| fig-cap: "Distribution de positive_2"
+
+
+# Calculer le nombre total d'observations (N)
+N <- sum(!is.na(stylesct_2.df$positive_2))
+
+# Créer l'histogramme 
+ggplot(stylesct_2.df, aes(x = positive_2)) +
+  geom_histogram(binwidth = 1, fill = "skyblue", color = "black", alpha = 0.7) +
+  labs(title = "Distribution de positive_2",
+       x = "Valeurs de positive_2",
+       y = "Fréquence") +
+  scale_x_continuous(limits = c(0, 6), breaks = seq(1, 5, by = 1)) +  # Limite de l'axe X de 1 à 6
+  annotate("text", x = 4.5, y = max(table(stylesct_2.df$positive_2)), 
+           label = paste("N =", N), hjust = 1, vjust = 1, size = 5, color = "black") +
+  theme_minimal()
+```
+
 ```{r niv2-tab, tidy=FALSE, echo = FALSE}
+#| label: tbl-styles2ct
+#| tbl-cap: "Transferts negatifs et positifs : calculs"
+
 knitr::kable(
-  niv2db, caption = 'Transferts négatifs et positifs : calculs',
+  niv2db, 
   booktabs = TRUE
 )
 ```
@@ -321,8 +380,33 @@ Les Figures \@ref(fig:positifirtinfo-fig) et \@ref(fig:positifirterreur-fig) per
 
 ## Niveau VIII
 
-### Colère
+### Statistiques descriptives pour chaque style de contre-transfert
 
+```{r, echo = FALSE}
+styles_ct_viii_descriptives.df <- data.frame(
+  Moyenne = sapply(stylesct_8.df[, c("negatif_8", "positif_8", "colere_8", "pessimisme_8", "pertelimites_8", "sexualise_8", "evitement_8", "mefiance_8")], mean),
+  Ecart_Type = sapply(stylesct_8.df[, c("negatif_8", "positif_8", "colere_8", "pessimisme_8", "pertelimites_8", "sexualise_8", "evitement_8", "mefiance_8")], sd),
+  Minimum = sapply(stylesct_8.df[, c("negatif_8", "positif_8", "colere_8", "pessimisme_8", "pertelimites_8", "sexualise_8", "evitement_8", "mefiance_8")], min),
+  Maximum = sapply(stylesct_8.df[, c("negatif_8", "positif_8", "colere_8", "pessimisme_8", "pertelimites_8", "sexualise_8", "evitement_8", "mefiance_8")], max)
+)
+styles_ct_viii_descriptives.df <- round(styles_ct_viii_descriptives.df,2)
+```
+
+```{r viii_describtives-tab, tidy=FALSE, echo = FALSE}
+#| label: tbl-styles8ct
+#| tbl-cap: "Styles de contre-transfert : statistiques descriptives"
+
+knitr::kable(
+styles_ct_viii_descriptives.df,
+booktabs = TRUE
+)
+```
+
+### Négatif
+
+### Positif
+
+### Colère
 
 Colère (17 items) révèle par les items qu’il comporte que la relation thérapeutique n’est pas bonne. Le thérapeute croit peu les dires du patient. Il peut se sentir irrité et en colère envers ce dernier et un sentiment de devoir se contrôler peut survenir.
 
@@ -334,28 +418,52 @@ Colère (17 items) révèle par les items qu’il comporte que la relation thér
 
 > The countertransference reactions of aggression (or of its equivalent) occur in response to transference situations in which the patient frustrates certain desires of the analyst. [@racker1957meanings p. 349]
 
-Le Tableau \@ref(tab:colere-tab) reprend le calcul du facteur renvoyant aux ressentis d'incompétence et d'impuissance.
+Le @tbl-colere reprend le calcul du facteur renvoyant aux ressentis de colère.
 
-```{r include=FALSE}
+```{r, echo = FALSE}
 colere_8calcul.df <- data.frame(
   Transfert = c("Colère"),
   Calcul = c("(item27 	+ item48 	+ item15 	+ item2 	+ item39 	+ item8 	+ item55 	+ item29 	+ item44 	+ item57 	+ item37 	+ item41 	+ item43 	+ item45 	+ item12 	+ item25 	+ item32 ) / 17")
 )
 ```
 
-```{r colere-tab, tidy=FALSE, echo = FALSE}
+```{r, echo = FALSE}
+#| label: tbl-colere
+#| tbl-cap: "Colère : calcul"
+
 knitr::kable(
   colere_8calcul.df, caption = 'Colère : calcul',
   booktabs = TRUE
 )
 ```
 
+```{r, echo = FALSE}
+#| label: fig-colere8hist
+#| fig-cap: "Distribution de colere_8"
+
+# Calculer le nombre total d'observations (N)
+N <- sum(!is.na(stylesct_8.df$colere_8))
+
+# Créer l'histogramme 
+ggplot(stylesct_8.df, aes(x = colere_8)) +
+  geom_histogram(binwidth = 1, fill = "skyblue", color = "black", alpha = 0.7) +
+  labs(title = "Distribution de colere_8",
+       x = "Valeurs de colere_8",
+       y = "Fréquence") +
+  scale_x_continuous(limits = c(0, 6), breaks = seq(1, 5, by = 1)) +  # Limite de l'axe X de 1 à 6
+  annotate("text", x = 4.5, y = max(table(stylesct_8.df$colere_8)), 
+           label = paste("N =", N), hjust = 1, vjust = 1, size = 5, color = "black") +
+  theme_minimal()
+```
+
+
+
 ```{r colere-fig, fig.cap='Col', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE}
 
 ggplot(ct, aes(x=colere_8)) + geom_freqpoly(size=2, bins=5)+xlim(1, 5)+labs(x = "Ressenti de colère", y = "Fréquence", title = "Ressenti de colère pour l'échantillon total")
 ```
 
-Figure \@ref(fig:colere-fig) représente les fréquences de ressentis de colère sur l'échantillon total.
+La @fig-colere8hist représente les fréquences de ressentis de colère sur l'échantillon total.
 
 #### Effet de l'âge des patients sur le ressenti de colère
 
@@ -376,11 +484,11 @@ ggplot(data = ct, aes(x = genre2, y = colere_8))+geom_boxplot()+ylim(1, 5)+labs(
 
 La Figure \@ref(fig:genrecolere-fig) représente les différences éventuelles de vécu d'impuissance des cliniciens en fonction du genre du patient.
 
-```{r}
+```{r, echo = FALSE}
 t.test(colere_8~genre2)
 ```
 
-### Effet du groupe de patients sur le ressenti de colère
+#### Effet du groupe de patients sur le ressenti de colère
 
 ```{r groupecolere-fig, fig.cap='Colère', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE}
 
@@ -389,7 +497,7 @@ ggplot(data = ct, aes(x = groupe2, y = colere_8))+geom_boxplot()+ylim(1, 5)+
        title = "Ressenti de colère selon le groupe")
 ```
 
-La Figure \@ref(fig:groupecolere-fig) représente les différences éventuelles de vécu d'impuissance des cliniciens en fonction du groupe du patient.
+La Figure \@ref(fig:groupecolere-fig) représente les différences éventuelles de vécu de colère des cliniciens en fonction du groupe du patient.
 
 ```{r}
 t.test(colere_8~groupe2)
@@ -397,28 +505,54 @@ t.test(colere_8~groupe2)
 
 #### Courbe d'information de l'échelle de colère
 
-```{r}
+```{r, echo = FALSE}
 colere.pcm <- 'colere_8.df = 1-17'
 colereresults.pcm <- mirt(data=colere_8.df, model=colere.pcm, itemtype="Rasch", SE=TRUE, verbose=FALSE)
 plot(colereresults.pcm, type = 'info', theta_lim = c(-4,4), lwd=2) 
 ```
 
-> This withdrawal has diverse origins and natures; but it has specific characteristics, for not every kind of withdrawal by the patient produces boredom in the analyst. One of these characteristics seems to be that the patient withdraws without going away, he takes his emotional departure from the analyst while yet remaining with him; there is as a rule no danger of the patient's taking flight. This partial withdrawal or abandonment expresses itself superficially in intellectualization (emotional blocking), in increased control, sometimes in monotony in the way of speaking, or in similar devices. The analyst has at these times the sensation of being excluded and of being impotent to guide the course of the sessions. It seems that the analysand tries in this way to avoid a latent and dreaded dependence upon the analyst. [@racker1957meanings p. 352-353]
+#### Représentation mythologique de la colère
+
+La divinité grecque de la colère est Lyssa (Λύσα). Elle est l'incarnation de la rage, de la frénésie et de la folie furieuse.
+Elle était une déesse secondaire, personnification d'une maladie zoonotique pouvant être transmise après une morsure d'animal, souvent d'un chien. Postérieurement appelée *rage*, la maladie lyssa se manifestait par une perte aiguë de stabilité mentale, une frénésie agressive et de la folie, ainsi qu'une peur de l'eau chez le patient, qui était perçu comme étant possédé par un démon en tant que punition divine [@tsoucalas2024lyssa].
+
+![La déesse Lyssa envoie ses chiens déchirer un chasseur, détail d'un vase du cinquième siècle avant l'ère chrétienne conservé au Musée des Beaux-Arts de Boston](lyssa.png){#fig-lyssa}
+
+La @fig-lyssa représente un chasseur déchiré par des chiens. À sa gauche se tient Lyssa, poussant les chiens dans un état de frénésie rabique. Elle est représentée comme une chasseresse thrace portant un bonnet en tête de renard ou de chien. Zeus se tient derrière elle, observant la scène passivement. Artémis se tient à droite, tenant une torche dans une main et un arc dans l'autre. 
+La mythologie grecque attribue dès lors le vécu d'intense colère à une maladie envoyée par Lyssa pour les punir.
+
+#### Analyse des ressentis de colères
+
+La colère du thérapeute peut être interprétée comme une réponse à la pression émotionnelle exercée par le patient, que ce dernier n'est pas capable de contenir ou de gérer lui-même. Par exemple, un patient qui lutte avec des sentiments de rage refoulée peut inconsciemment pousser le thérapeute à éprouver cette colère à sa place, créant ainsi une tension dans la relation thérapeutique [@heimann2018counter]. Cette colère, si elle n'est pas reconnue et analysée par le thérapeute, peut interférer avec le traitement, en affectant l'attitude du thérapeute et en compromettant l'alliance thérapeutique.
+Cependant, la colère du thérapeute n'est pas toujours dysfonctionnelle. @bion1962learning suggère que les émotions éprouvées par le thérapeute, y compris la colère, peuvent servir de matériau pour comprendre le monde psychique du patient. Si la colère est reconnue, contenue et interprétée de manière appropriée, elle peut devenir un outil thérapeutique puissant. Par exemple, la colère ressentie par le thérapeute peut signaler la présence d'une résistance ou d'un contenu psychique important chez le patient, que ce dernier est en train d'éviter ou de nier [@gabbard2001psychodynamic].
 
 
+#### Effet de l'âge sur les types de contre-transfert
 
-## Effet de l'âge sur les types de contre-transfert
-
-```{r}
+```{r, echo = FALSE}
 ggplot(ct, aes(x=age)) +
   geom_smooth(aes(y = positive_2), color = "green") + 
   geom_smooth(aes(y = colere_8), color="steelblue") +
   geom_smooth(aes(y = negative_2), color="red") 
 ```
 
+### Pessimisme
+
+### Perte des limites
+
+### Sexualisé
+
+### Evitement
+
+> This withdrawal has diverse origins and natures; but it has specific characteristics, for not every kind of withdrawal by the patient produces boredom in the analyst. One of these characteristics seems to be that the patient withdraws without going away, he takes his emotional departure from the analyst while yet remaining with him; there is as a rule no danger of the patient's taking flight. This partial withdrawal or abandonment expresses itself superficially in intellectualization (emotional blocking), in increased control, sometimes in monotony in the way of speaking, or in similar devices. The analyst has at these times the sensation of being excluded and of being impotent to guide the course of the sessions. It seems that the analysand tries in this way to avoid a latent and dreaded dependence upon the analyst. [@racker1957meanings p. 352-353]
+
+
+### Méfiance
+
+
 ## Fiabilité inter-juges
 
-```{r include=FALSE}
+```{r, echo = FALSE}
 
 #Calcul des scores pour les psychiatres
 
@@ -458,16 +592,18 @@ reliability.df <- data.frame(
    p = c(printnum(corpositif$p.value),printnum(cornegatif$p.value),printnum(corcolere$p.value),printnum(corpessimisme$p.value),printnum(corpertelimites$p.value),printnum(corsexualise$p.value)),
    stringsAsFactors = FALSE
 )
-
 ```
 
 La cotation du TRQ pour un(e) même patient(e) par deux professionnels différents mène-t-elle à des résultats similaires ? Il est raisonnable de penser qu'elle ne sera pas complètement identique dès lors que chaque dyade professionnel-patient est différente. Mais sera-telle complètement différente ? Pour tenter de répondre à cette question, nous avons demandé à des psychiatres de coter le TRQ pour les patients que les psychologues avaient rencontrés. Notons que les psychiatres n'ont pas rencontrés tous les patients évalués par les psychologues. En effet, le nombre de patients cotés par les psychiatres est égal à `r npsychiatre`. Nous avons dès lors un effectif plus réduit pour cette partie de l'étude.
 
 ```{r reliability-tab, tidy=FALSE, echo = FALSE}
+#| label: tbl-reliability
+#| tbl-cap: "Fiabilité inter-correcteurs"
+
 knitr::kable(
-  reliability.df, caption = 'Fiabilité inter-correcteurs',
+  reliability.df,
   booktabs = TRUE
 )
 ```
 
-Le Tableau \@ref(tab:reliability-tab) reprend les moyennes obtenues pour chaque type de contre-transfert cotés par les psychologue d'une part et les psychiatres d'autre part. Il indique également la corrélation (Rho de spearman) entre les deux scores et le degré de significativité.
+Le @tbl-reliability reprend les moyennes obtenues pour chaque type de contre-transfert cotés par les psychologue d'une part et les psychiatres d'autre part. Il indique également la corrélation (Rho de spearman) entre les deux scores et le degré de significativité.
